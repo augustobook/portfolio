@@ -150,11 +150,12 @@ img {
 
 .section-head .num {
   display: block;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
   font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
   color: var(--accent);
 }
 

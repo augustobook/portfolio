@@ -97,7 +97,7 @@ export const pt: Content = {
         stack: ['Python', 'SQL Server', 'Redis', 'Kafka', 'Docker', 'Linux', 'AWS EC2', 'MongoDB', 'Redes'],
       },
       {
-        role: 'Cientista e Engenheiro de Dados',
+        role: 'Cientista e Engenheiro de Dados (meio período)',
         company: 'Cooperando',
         location: 'Passo Fundo, RS',
         start: '2021-06',
@@ -195,6 +195,26 @@ export const pt: Content = {
           'Gestão de servidores e infraestrutura em Linux e AWS EC2',
         ],
         stack: ['Python', 'Kafka', 'Redis', 'SQL Server', 'MongoDB', 'Docker', 'AWS EC2', 'Linux'],
+      },
+      {
+        title: 'Análise de sentimento com BERT e pipelines de dados na AWS',
+        context: 'Cooperando',
+        kind: 'corporate',
+        summary: 'Do web scraping ao modelo em produção: dados estruturados e classificação de sentimento em português.',
+        problem:
+          'Os dados de negócio estavam espalhados em fontes externas, sem estrutura para análise, e os textos em português precisavam ser classificados com mais nuance do que apenas "positivo" e "negativo".',
+        solution:
+          'Pipelines de extração, processamento e armazenamento, modelos de machine learning e um classificador de sentimento com BERT Large, publicados na AWS.',
+        result:
+          'Uma base estruturada para análises e decisões, classificação automática de sentimento em <strong>10 classes</strong> e aplicações em produção na AWS com custo sob demanda.',
+        highlights: [
+          'Pipelines completos de dados: extração com web scraping, processamento com Pandas e NumPy e armazenamento em MongoDB, DynamoDB e MySQL',
+          'Analisador de sentimento de <strong>10 classes</strong> com BERT Large em português, treinado com anotações da base própria da empresa',
+          'Modelos de machine learning para reconhecimento de padrões e predição: Naive Bayes, Árvores de Decisão, K-Means, Regressão, SVM e Redes Neurais',
+          'Análises de dados com Power BI, Excel e Pandas para apoiar a tomada de decisão',
+          'Deploy das aplicações com Flask e Nginx na AWS (EC2, S3, DynamoDB e Lambda), integradas para custo sob demanda',
+        ],
+        stack: ['Python', 'BERT', 'NLP', 'Scikit-learn', 'Pandas', 'NumPy', 'Web scraping', 'MongoDB', 'DynamoDB', 'MySQL', 'Flask', 'Nginx', 'AWS', 'Power BI'],
       },
     ],
   },

@@ -97,7 +97,7 @@ export const en: Content = {
         stack: ['Python', 'SQL Server', 'Redis', 'Kafka', 'Docker', 'Linux', 'AWS EC2', 'MongoDB', 'Networking'],
       },
       {
-        role: 'Data Scientist & Data Engineer',
+        role: 'Data Scientist & Data Engineer (part-time)',
         company: 'Cooperando',
         location: 'Passo Fundo, Brazil',
         start: '2021-06',
@@ -193,6 +193,26 @@ export const en: Content = {
           'Server and infrastructure management on Linux and AWS EC2',
         ],
         stack: ['Python', 'Kafka', 'Redis', 'SQL Server', 'MongoDB', 'Docker', 'AWS EC2', 'Linux'],
+      },
+      {
+        title: 'BERT sentiment analysis and data pipelines on AWS',
+        context: 'Cooperando',
+        kind: 'corporate',
+        summary: 'From web scraping to a model in production: structured data and sentiment classification for Portuguese.',
+        problem:
+          'Business data was scattered across external sources with no structure for analysis, and Portuguese text needed classifying with more nuance than just "positive" and "negative".',
+        solution:
+          'Extraction, processing and storage pipelines, machine learning models and a BERT Large sentiment classifier, deployed on AWS.',
+        result:
+          'A structured base for analysis and decisions, automatic <strong>10-class</strong> sentiment classification and production apps on AWS with on-demand cost.',
+        highlights: [
+          'End-to-end data pipelines: web scraping for extraction, Pandas and NumPy for processing, MongoDB, DynamoDB and MySQL for storage',
+          'A <strong>10-class</strong> sentiment analyzer with Portuguese BERT Large, trained on annotations from the company’s own data',
+          'Machine learning models for pattern recognition and prediction: Naive Bayes, Decision Trees, K-Means, Regression, SVM and Neural Networks',
+          'Data analysis with Power BI, Excel and Pandas to support decision-making',
+          'Deployment with Flask and Nginx on AWS (EC2, S3, DynamoDB and Lambda), integrated for on-demand cost',
+        ],
+        stack: ['Python', 'BERT', 'NLP', 'Scikit-learn', 'Pandas', 'NumPy', 'Web scraping', 'MongoDB', 'DynamoDB', 'MySQL', 'Flask', 'Nginx', 'AWS', 'Power BI'],
       },
     ],
   },
