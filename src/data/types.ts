@@ -35,6 +35,8 @@ export interface Education {
   start: string;
   end: string;
   status: string;
+  /** Título do TCC/dissertação, quando houver. */
+  thesis?: string;
 }
 
 export interface Publication {
@@ -81,6 +83,7 @@ export interface Content {
   education: {
     title: string;
     items: Education[];
+    thesisLabel: string;
     publicationsTitle: string;
     publications: Publication[];
   };

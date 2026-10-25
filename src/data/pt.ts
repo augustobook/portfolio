@@ -62,11 +62,13 @@ export const pt: Content = {
         bullets: [
           'Desenvolvi soluções de dados e IA para automação de processos jurídicos, aumentando a eficiência operacional e a geração de valor para o negócio',
           'Estruturei pipelines de dados e desenvolvi modelos de machine learning para extração e análise de informações relevantes',
-          'Implementei soluções com LLMs e técnicas de RAG para leitura, interpretação e geração automatizada de documentos',
+          'Implementei soluções com LLMs (Gemini e modelos open-source) e RAG com LangChain para leitura, interpretação e geração automatizada de documentos',
+          'Construí a camada de busca semântica com pgvector, Qdrant, Chroma e Elasticsearch',
+          'Estruturei a avaliação das soluções de LLM/RAG: base de referência para testes de regressão, métricas de recuperação, revisão humana por especialistas e monitoramento de custo e latência',
           'Automatizei processos críticos, reduzindo em <strong>80%+</strong> o tempo de análise manual de documentos',
           'Apoiei a tomada de decisão nas áreas jurídica e operacional com soluções orientadas a dados',
         ],
-        stack: ['Python', 'Machine Learning', 'LLMs', 'RAG', 'NLP', 'APIs REST', 'PostgreSQL', 'Docker', 'Kubernetes'],
+        stack: ['Python', 'LLMs', 'Gemini', 'LLMs open-source', 'RAG', 'LangChain', 'pgvector', 'Qdrant', 'Chroma', 'Elasticsearch', 'NLP', 'FastAPI', 'PostgreSQL', 'Docker', 'Kubernetes'],
       },
       {
         role: 'Desenvolvedor Full-Stack de Dados e IA',
@@ -127,13 +129,15 @@ export const pt: Content = {
         kind: 'public',
         featured: true,
         url: 'https://radar-eleitoral.oladata.com.br/',
-        summary: 'Plataforma interativa para explorar os dados das eleições brasileiras de 2010 a 2026.',
+        summary:
+          'Painel das eleições brasileiras de 2010 a 2026 com um agente de IA que responde perguntas sobre os dados consultando as próprias bases em SQL.',
         problem:
-          'Os dados eleitorais públicos são volumosos, ficam espalhados entre vários pleitos e são difíceis de explorar sem conhecimento técnico.',
+          'Os dados eleitorais do TSE são volumosos, ficam espalhados entre vários pleitos e são difíceis de explorar sem conhecimento técnico.',
         solution:
-          'Pipeline que consolida mais de uma década de resultados eleitorais e uma aplicação analítica em Python (Plotly Dash) com visualizações e filtros interativos.',
-        result: 'Aplicação no ar e aberta ao público, que permite a qualquer pessoa explorar a série histórica das eleições.',
-        stack: ['Python', 'Plotly Dash', 'Pandas', 'ETL', 'Dados abertos'],
+          'Pipeline que consolida os dados abertos do TSE, detalhados por estado, município e seção eleitoral, com DuckDB e PostgreSQL. Por cima, um painel em Dash/Plotly com mapas, comparações entre eleições e apuração ao vivo, e um assistente com LLM: um agente com ferramentas (LangChain) que gera e executa consultas SQL para responder em linguagem natural.',
+        result:
+          'Aplicação no ar e aberta ao público: qualquer pessoa explora a série histórica das eleições ou simplesmente pergunta ao assistente.',
+        stack: ['Python', 'LangChain', 'Agentes LLM', 'OpenAI GPT', 'Text-to-SQL', 'DuckDB', 'PostgreSQL', 'Dash', 'Plotly', 'Pandas', 'PyArrow', 'Docker'],
       },
       {
         title: 'Análise de documentos jurídicos com LLMs e RAG',
@@ -142,9 +146,9 @@ export const pt: Content = {
         summary: 'Automação da leitura, interpretação e geração de documentos jurídicos.',
         problem: 'As equipes jurídicas gastavam horas lendo e analisando grandes volumes de documentos manualmente.',
         solution:
-          'Pipelines de extração e estruturação de dados, RAG sobre a base documental e LLMs para interpretar e gerar documentos, tudo exposto via APIs REST.',
+          'Pipelines de extração e estruturação de dados, RAG com LangChain e busca vetorial (pgvector, Qdrant, Chroma, Elasticsearch), e LLMs (Gemini e open-source) para interpretar e gerar documentos, expostos via APIs REST. A qualidade é acompanhada com base de referência, métricas de recuperação e revisão humana, além do monitoramento de custo e latência.',
         result: 'Redução de mais de 80% no tempo de análise manual, além de apoio à decisão nas áreas jurídica e operacional.',
-        stack: ['Python', 'LLMs', 'RAG', 'NLP', 'PostgreSQL', 'Docker', 'Kubernetes'],
+        stack: ['Python', 'LLMs', 'RAG', 'LangChain', 'pgvector', 'Qdrant', 'NLP', 'PostgreSQL', 'Docker', 'Kubernetes'],
       },
       {
         title: 'Gestão de guinchos em tempo real',
@@ -169,28 +173,6 @@ export const pt: Content = {
         stack: ['Python', 'Kafka', 'Redis', 'SQL Server', 'Docker', 'AWS EC2', 'Linux'],
       },
       {
-        title: 'Análise de sentimento com BERT Large',
-        context: 'Cooperando',
-        kind: 'corporate',
-        summary: 'Classificador de sentimento em português com 10 classes.',
-        problem: 'Classificar grandes volumes de texto em português com mais nuances do que apenas "positivo" e "negativo".',
-        solution:
-          'Fine-tuning do BERT Large em português sobre uma base proprietária, com classificação em 10 classes, e deploy na AWS com Flask e Nginx.',
-        result: 'Classificação automática e detalhada de sentimento em português, treinada com dados da própria empresa.',
-        stack: ['Python', 'BERT', 'NLP', 'Flask', 'Nginx', 'AWS'],
-      },
-      {
-        title: 'Pipelines de dados e modelos preditivos na AWS',
-        context: 'Cooperando',
-        kind: 'corporate',
-        summary: 'Do web scraping ao dashboard: dados estruturados para decisão.',
-        problem: 'Os dados de negócio estavam espalhados em fontes externas e sem estrutura para análise.',
-        solution:
-          'Pipelines de extração (web scraping), processamento (Pandas/NumPy) e armazenamento (MongoDB, DynamoDB, MySQL), com modelos de classificação e predição e dashboards em Power BI.',
-        result: 'Uma base estruturada e confiável para análises e decisões orientadas a dados.',
-        stack: ['Python', 'Pandas', 'Scikit-learn', 'AWS Lambda', 'DynamoDB', 'MongoDB', 'Power BI'],
-      },
-      {
         title: 'Detecção de arritmias cardíacas',
         context: 'Publicação científica',
         kind: 'research',
@@ -207,12 +189,14 @@ export const pt: Content = {
   skills: {
     title: 'Habilidades',
     groups: [
-      { title: 'IA & Machine Learning', items: ['LLMs', 'RAG', 'NLP', 'BERT', 'TensorFlow', 'Scikit-learn', 'Redes Neurais', 'SVM', 'K-Means'] },
-      { title: 'Engenharia de Dados', items: ['Python', 'Pandas', 'NumPy', 'ETL/ELT', 'Databricks', 'Web scraping', 'Plotly Dash', 'Power BI'] },
-      { title: 'Backend & Sistemas Distribuídos', items: ['APIs REST', 'Flask', 'Kafka', 'Redis', 'SSE', 'Meilisearch', 'C#'] },
-      { title: 'Bancos de Dados', items: ['PostgreSQL', 'SQL Server', 'MongoDB', 'DynamoDB', 'MySQL', 'Neo4j'] },
-      { title: 'Cloud & DevOps', items: ['AWS EC2', 'S3', 'Lambda', 'Docker', 'Kubernetes', 'Linux', 'Nginx'] },
-      { title: 'Profissional', items: ['Ética e confidencialidade', 'Tomada de decisão orientada a dados', 'Aprendizado contínuo'] },
+      {
+        title: 'IA & Machine Learning',
+        items: ['LLMs', 'RAG', 'Agentes LLM', 'LangChain', 'Avaliação de LLM/RAG', 'NLP', 'BERT', 'TensorFlow', 'Scikit-learn', 'Deep Learning'],
+      },
+      { title: 'Engenharia de Dados', items: ['Python', 'SQL', 'Pandas', 'NumPy', 'ETL/ELT', 'Databricks', 'DuckDB', 'Web scraping', 'Plotly Dash', 'Power BI'] },
+      { title: 'Backend & Sistemas Distribuídos', items: ['APIs REST', 'FastAPI', 'Flask', 'Kafka', 'Redis', 'SSE', 'Meilisearch', 'C#'] },
+      { title: 'Bancos de Dados', items: ['PostgreSQL', 'pgvector', 'Qdrant', 'Chroma', 'Elasticsearch', 'SQL Server', 'MongoDB', 'DynamoDB', 'MySQL', 'Neo4j'] },
+      { title: 'Cloud & DevOps', items: ['AWS EC2', 'S3', 'Lambda', 'Docker', 'Kubernetes', 'Git', 'CI/CD', 'Linux', 'Nginx'] },
     ],
   },
   education: {
@@ -226,6 +210,8 @@ export const pt: Content = {
         start: '2024-02',
         end: '2026-03',
         status: 'Concluído',
+        thesis:
+          'Detecção de arritmias cardíacas com inteligência artificial utilizando o padrão AAMI e combinações de derivações do plano frontal',
       },
       {
         degree: 'Bacharelado em Ciência da Computação',
@@ -236,6 +222,7 @@ export const pt: Content = {
         status: 'Concluído',
       },
     ],
+    thesisLabel: 'Dissertação',
     publicationsTitle: 'Publicações',
     publications: [
       {

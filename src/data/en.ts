@@ -62,11 +62,13 @@ export const en: Content = {
         bullets: [
           'Built data and AI solutions to automate legal processes, improving operational efficiency and business value',
           'Designed data pipelines and machine learning models to extract and analyze key information',
-          'Implemented LLM and RAG solutions to read, interpret and automatically generate documents',
+          'Implemented LLM (Gemini and open-source models) and RAG solutions with LangChain to read, interpret and automatically generate documents',
+          'Built the semantic search layer with pgvector, Qdrant, Chroma and Elasticsearch',
+          'Set up evaluation for the LLM/RAG systems: a reference set for regression testing, retrieval metrics, expert human review and cost and latency monitoring',
           'Automated critical processes, cutting manual document review time by <strong>80%+</strong>',
           'Supported legal and operational decision-making with data-driven solutions',
         ],
-        stack: ['Python', 'Machine Learning', 'LLMs', 'RAG', 'NLP', 'REST APIs', 'PostgreSQL', 'Docker', 'Kubernetes'],
+        stack: ['Python', 'LLMs', 'Gemini', 'Open-source LLMs', 'RAG', 'LangChain', 'pgvector', 'Qdrant', 'Chroma', 'Elasticsearch', 'NLP', 'FastAPI', 'PostgreSQL', 'Docker', 'Kubernetes'],
       },
       {
         role: 'Full-Stack Data & AI Developer',
@@ -127,12 +129,14 @@ export const en: Content = {
         kind: 'public',
         featured: true,
         url: 'https://radar-eleitoral.oladata.com.br/',
-        summary: 'An interactive platform to explore Brazilian election data from 2010 to 2026.',
-        problem: 'Public election data is large, scattered across many elections and hard to explore without technical skills.',
+        summary:
+          'A dashboard of Brazilian elections from 2010 to 2026 with an AI agent that answers questions about the data by querying its own SQL databases.',
+        problem:
+          'Official election data (TSE) is large, scattered across many elections and hard to explore without technical skills.',
         solution:
-          'A pipeline that consolidates more than a decade of election results, plus an analytics app in Python (Plotly Dash) with interactive charts and filters.',
-        result: 'A live public app that lets anyone explore the historical election record.',
-        stack: ['Python', 'Plotly Dash', 'Pandas', 'ETL', 'Open data'],
+          "A pipeline that consolidates TSE open data down to state, municipality and polling-station level, using DuckDB and PostgreSQL. On top of it, a Dash/Plotly dashboard with maps, election-to-election comparisons and live vote counting, plus an LLM assistant: a tool-using agent (LangChain) that writes and runs SQL queries to answer in plain language.",
+        result: 'A live public app: anyone can explore the historical election record or simply ask the assistant.',
+        stack: ['Python', 'LangChain', 'LLM agents', 'OpenAI GPT', 'Text-to-SQL', 'DuckDB', 'PostgreSQL', 'Dash', 'Plotly', 'Pandas', 'PyArrow', 'Docker'],
       },
       {
         title: 'Legal document analysis with LLMs and RAG',
@@ -141,9 +145,9 @@ export const en: Content = {
         summary: 'Automated reading, interpretation and drafting of legal documents.',
         problem: 'Legal teams spent hours reading and analyzing large volumes of documents by hand.',
         solution:
-          'Data extraction and structuring pipelines, RAG over the document base and LLMs to interpret and generate documents, served through REST APIs.',
+          'Data extraction and structuring pipelines, RAG with LangChain and vector search (pgvector, Qdrant, Chroma, Elasticsearch), and LLMs (Gemini and open-source) to interpret and generate documents, served through REST APIs. Quality is tracked with a reference set, retrieval metrics and human review, alongside cost and latency monitoring.',
         result: 'Manual review time cut by more than 80%, with better support for legal and operational decisions.',
-        stack: ['Python', 'LLMs', 'RAG', 'NLP', 'PostgreSQL', 'Docker', 'Kubernetes'],
+        stack: ['Python', 'LLMs', 'RAG', 'LangChain', 'pgvector', 'Qdrant', 'NLP', 'PostgreSQL', 'Docker', 'Kubernetes'],
       },
       {
         title: 'Real-time tow-truck management',
@@ -167,27 +171,6 @@ export const en: Content = {
         stack: ['Python', 'Kafka', 'Redis', 'SQL Server', 'Docker', 'AWS EC2', 'Linux'],
       },
       {
-        title: 'Sentiment analysis with BERT Large',
-        context: 'Cooperando',
-        kind: 'corporate',
-        summary: 'A 10-class sentiment classifier for Portuguese text.',
-        problem: 'Classifying large volumes of Portuguese text with more nuance than just "positive" and "negative".',
-        solution: 'Fine-tuned Portuguese BERT Large on proprietary data into 10 classes, deployed on AWS with Flask and Nginx.',
-        result: 'Automatic, fine-grained sentiment classification for Portuguese, trained on company data.',
-        stack: ['Python', 'BERT', 'NLP', 'Flask', 'Nginx', 'AWS'],
-      },
-      {
-        title: 'Data pipelines and predictive models on AWS',
-        context: 'Cooperando',
-        kind: 'corporate',
-        summary: 'From web scraping to dashboards: structured data for decision-making.',
-        problem: 'Business data was scattered across external sources with no structure for analysis.',
-        solution:
-          'Pipelines for extraction (web scraping), processing (Pandas/NumPy) and storage (MongoDB, DynamoDB, MySQL), with classification and prediction models and Power BI dashboards.',
-        result: 'A structured, reliable foundation for analysis and data-driven decisions.',
-        stack: ['Python', 'Pandas', 'Scikit-learn', 'AWS Lambda', 'DynamoDB', 'MongoDB', 'Power BI'],
-      },
-      {
         title: 'Cardiac arrhythmia detection',
         context: 'Peer-reviewed paper',
         kind: 'research',
@@ -203,12 +186,14 @@ export const en: Content = {
   skills: {
     title: 'Skills',
     groups: [
-      { title: 'AI & Machine Learning', items: ['LLMs', 'RAG', 'NLP', 'BERT', 'TensorFlow', 'Scikit-learn', 'Neural Networks', 'SVM', 'K-Means'] },
-      { title: 'Data Engineering', items: ['Python', 'Pandas', 'NumPy', 'ETL/ELT', 'Databricks', 'Web scraping', 'Plotly Dash', 'Power BI'] },
-      { title: 'Backend & Distributed Systems', items: ['REST APIs', 'Flask', 'Kafka', 'Redis', 'SSE', 'Meilisearch', 'C#'] },
-      { title: 'Databases', items: ['PostgreSQL', 'SQL Server', 'MongoDB', 'DynamoDB', 'MySQL', 'Neo4j'] },
-      { title: 'Cloud & DevOps', items: ['AWS EC2', 'S3', 'Lambda', 'Docker', 'Kubernetes', 'Linux', 'Nginx'] },
-      { title: 'Professional', items: ['Ethics & confidentiality', 'Data-driven decisions', 'Continuous learning'] },
+      {
+        title: 'AI & Machine Learning',
+        items: ['LLMs', 'RAG', 'LLM agents', 'LangChain', 'LLM/RAG evaluation', 'NLP', 'BERT', 'TensorFlow', 'Scikit-learn', 'Deep Learning'],
+      },
+      { title: 'Data Engineering', items: ['Python', 'SQL', 'Pandas', 'NumPy', 'ETL/ELT', 'Databricks', 'DuckDB', 'Web scraping', 'Plotly Dash', 'Power BI'] },
+      { title: 'Backend & Distributed Systems', items: ['REST APIs', 'FastAPI', 'Flask', 'Kafka', 'Redis', 'SSE', 'Meilisearch', 'C#'] },
+      { title: 'Databases', items: ['PostgreSQL', 'pgvector', 'Qdrant', 'Chroma', 'Elasticsearch', 'SQL Server', 'MongoDB', 'DynamoDB', 'MySQL', 'Neo4j'] },
+      { title: 'Cloud & DevOps', items: ['AWS EC2', 'S3', 'Lambda', 'Docker', 'Kubernetes', 'Git', 'CI/CD', 'Linux', 'Nginx'] },
     ],
   },
   education: {
@@ -222,6 +207,8 @@ export const en: Content = {
         start: '2024-02',
         end: '2026-03',
         status: 'Completed',
+        thesis:
+          'Cardiac arrhythmia detection with artificial intelligence using the AAMI standard and combinations of frontal-plane ECG leads (in Portuguese)',
       },
       {
         degree: 'BSc in Computer Science',
@@ -232,6 +219,7 @@ export const en: Content = {
         status: 'Completed',
       },
     ],
+    thesisLabel: 'Dissertation',
     publicationsTitle: 'Publications',
     publications: [
       {

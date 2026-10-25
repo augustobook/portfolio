@@ -27,6 +27,11 @@ const e = t.education;
             <p class="school">
               {ed.school} · {ed.location}
             </p>
+            {ed.thesis && (
+              <p class="thesis">
+                <span class="mono">{e.thesisLabel}</span> {ed.thesis}
+              </p>
+            )}
           </article>
         ))
       }
@@ -85,6 +90,19 @@ const e = t.education;
   .school {
     color: var(--muted);
     font-size: 0.92rem;
+  }
+  .thesis {
+    margin-top: 8px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+    font-size: 0.92rem;
+    line-height: 1.45;
+  }
+  .thesis .mono {
+    display: block;
+    margin-bottom: 2px;
+    font-size: 0.75rem;
+    color: var(--muted);
   }
   .sub {
     margin: 44px 0 16px;
