@@ -137,12 +137,17 @@ export const en: Content = {
         featured: true,
         url: 'https://radar-eleitoral.oladata.com.br/',
         summary:
-          'A dashboard of Brazilian elections from 2010 to 2026 with an AI agent that answers questions about the data by querying its own SQL databases.',
+          'A dashboard of Brazilian elections from 2010 to 2026 with an AI chatbot that answers any question users ask about the data and the site, in plain language.',
         problem:
           'Official election data (TSE) is large, scattered across many elections and hard to explore without technical skills.',
         solution:
-          "A pipeline that consolidates TSE open data down to state, municipality and polling-station level, using DuckDB and PostgreSQL. On top of it, a Dash/Plotly dashboard with maps, election-to-election comparisons and live vote counting, plus an LLM assistant: a tool-using agent (LangChain) that writes and runs SQL queries to answer in plain language.",
-        result: 'A live public app: anyone can explore the historical election record or simply ask the assistant.',
+          "A pipeline that consolidates TSE open data down to state, municipality and polling-station level, using DuckDB and PostgreSQL. On top of it, a Dash/Plotly dashboard with maps, election-to-election comparisons and live vote counting, plus an AI chatbot: users ask whatever they want about the elections or the site, the way they would ask a person, and get an answer right away. Behind it, a tool-using LLM agent (LangChain) queries the SQL databases to build the answer.",
+        result: 'A live public app: anyone can explore the historical election record or simply ask the chatbot.',
+        images: [
+          { src: 'projetos/radar-eleitoral/inicio.webp', alt: 'Radar Eleitoral home page with overall figures and analysis shortcuts' },
+          { src: 'projetos/radar-eleitoral/comparecimento.webp', alt: 'Turnout, abstention, blank and null votes with a timeline for each indicator' },
+          { src: 'projetos/radar-eleitoral/fragmentacao.webp', alt: 'Fragmentation and competition: winning margins and effective number of parties by municipality' },
+        ],
         stack: ['Python', 'LangChain', 'LLM agents', 'OpenAI GPT', 'Text-to-SQL', 'DuckDB', 'PostgreSQL', 'Dash', 'Plotly', 'Pandas', 'PyArrow', 'Docker'],
       },
       {

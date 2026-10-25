@@ -137,13 +137,18 @@ export const pt: Content = {
         featured: true,
         url: 'https://radar-eleitoral.oladata.com.br/',
         summary:
-          'Painel das eleições brasileiras de 2010 a 2026 com um agente de IA que responde perguntas sobre os dados consultando as próprias bases em SQL.',
+          'Painel das eleições brasileiras de 2010 a 2026 com um chatbot de IA que responde, em linguagem natural, qualquer pergunta do usuário sobre os dados e o site.',
         problem:
           'Os dados eleitorais do TSE são volumosos, ficam espalhados entre vários pleitos e são difíceis de explorar sem conhecimento técnico.',
         solution:
-          'Pipeline que consolida os dados abertos do TSE, detalhados por estado, município e seção eleitoral, com DuckDB e PostgreSQL. Por cima, um painel em Dash/Plotly com mapas, comparações entre eleições e apuração ao vivo, e um assistente com LLM: um agente com ferramentas (LangChain) que gera e executa consultas SQL para responder em linguagem natural.',
+          'Pipeline que consolida os dados abertos do TSE, detalhados por estado, município e seção eleitoral, com DuckDB e PostgreSQL. Por cima, um painel em Dash/Plotly com mapas, comparações entre eleições e apuração ao vivo, e um chatbot com IA: o usuário pergunta o que quiser sobre as eleições ou sobre o site, do jeito que falaria com uma pessoa, e recebe a resposta na hora. Por trás, um agente LLM com ferramentas (LangChain) consulta as bases em SQL para montar a resposta.',
         result:
-          'Aplicação no ar e aberta ao público: qualquer pessoa explora a série histórica das eleições ou simplesmente pergunta ao assistente.',
+          'Aplicação no ar e aberta ao público: qualquer pessoa explora a série histórica das eleições ou simplesmente pergunta ao chatbot.',
+        images: [
+          { src: 'projetos/radar-eleitoral/inicio.webp', alt: 'Página inicial do Radar Eleitoral com os números gerais e os atalhos de análise' },
+          { src: 'projetos/radar-eleitoral/comparecimento.webp', alt: 'Comparecimento, abstenção, brancos e nulos com a linha do tempo de cada indicador' },
+          { src: 'projetos/radar-eleitoral/fragmentacao.webp', alt: 'Fragmentação e competição: margem de vitória e número efetivo de partidos nos municípios' },
+        ],
         stack: ['Python', 'LangChain', 'Agentes LLM', 'OpenAI GPT', 'Text-to-SQL', 'DuckDB', 'PostgreSQL', 'Dash', 'Plotly', 'Pandas', 'PyArrow', 'Docker'],
       },
       {

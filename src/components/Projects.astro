@@ -2,6 +2,7 @@
 import type { Content, ProjectKind } from '../data/types';
 import SectionHead from './SectionHead.astro';
 import Icon from './Icon.astro';
+import { withBase } from '../lib/utils';
 
 interface Props {
   t: Content;
@@ -51,6 +52,17 @@ const linkLabel = (kind: ProjectKind) => (kind === 'research' ? t.ui.readPaper :
               <dd>{proj.result}</dd>
             </div>
           </dl>
+          {proj.images && (
+            <ul class="gallery">
+              {proj.images.map((img) => (
+                <li>
+                  <a href={withBase(img.src)} target="_blank" rel="noopener">
+                    <img src={withBase(img.src)} alt={img.alt} width="1440" height="900" loading="lazy" decoding="async" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
         </article>
       ))
     }
@@ -176,6 +188,40 @@ const linkLabel = (kind: ProjectKind) => (kind === 'research' ? t.ui.readPaper :
   }
   .featured .chips {
     margin: 6px 0 8px;
+  }
+
+  /* Galeria de capturas: ocupa a largura toda do card. */
+  .gallery {
+    grid-column: 1 / -1;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 14px;
+  }
+  @media (min-width: 640px) {
+    .gallery {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .gallery a {
+    display: block;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    transition: transform 0.15s, border-color 0.15s;
+  }
+  .gallery a:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+  }
+  .gallery img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    object-position: top left;
   }
 
   .psr {

@@ -25,6 +25,8 @@ export interface Project {
   stack: string[];
   /** O que foi desenvolvido no projeto. Aceita HTML simples. */
   highlights?: string[];
+  /** Capturas de tela em /public, exibidas como galeria no card. */
+  images?: { src: string; alt: string }[];
   url?: string;
   featured?: boolean;
 }
