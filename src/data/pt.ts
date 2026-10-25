@@ -17,6 +17,7 @@ export const pt: Content = {
   ui: {
     switchLang: 'Read in English',
     toggleTheme: 'Alternar tema claro/escuro',
+    menu: 'Abrir menu de seções',
     present: 'Atual',
     downloadCv: 'Baixar CV (PDF)',
     seeProjects: 'Ver projetos',
@@ -33,7 +34,15 @@ export const pt: Content = {
     terminal: {
       file: 'perfil.json',
       role: 'Cientista de Dados / Engenheiro de IA',
-      focus: ['LLMs', 'RAG', 'Machine Learning', 'Engenharia de Dados'],
+      focus: [
+        'Ciência de Dados',
+        'Inteligência Artificial',
+        'Aprendizado de Máquina',
+        'Grandes Modelos de Linguagem (LLMs)',
+        'Geração Aumentada por Recuperação (RAG)',
+        'Engenharia de Dados',
+        'Pesquisa científica',
+      ],
     },
   },
   about: {

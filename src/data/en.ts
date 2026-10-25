@@ -17,6 +17,7 @@ export const en: Content = {
   ui: {
     switchLang: 'Ler em português',
     toggleTheme: 'Toggle light/dark theme',
+    menu: 'Open section menu',
     present: 'Present',
     downloadCv: 'Download CV (PDF)',
     seeProjects: 'See projects',
@@ -33,7 +34,15 @@ export const en: Content = {
     terminal: {
       file: 'profile.json',
       role: 'Data Scientist / AI Engineer',
-      focus: ['LLMs', 'RAG', 'Machine Learning', 'Data Engineering'],
+      focus: [
+        'Data Science',
+        'Artificial Intelligence',
+        'Machine Learning',
+        'Large Language Models (LLMs)',
+        'Retrieval-Augmented Generation (RAG)',
+        'Data Engineering',
+        'Scientific research',
+      ],
     },
   },
   about: {

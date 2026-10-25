@@ -35,11 +35,44 @@ const links = [
         <span class="i-sun"><Icon name="sun" /></span>
         <span class="i-moon"><Icon name="moon" /></span>
       </button>
+      <button
+        type="button"
+        class="menu-toggle"
+        aria-label={t.ui.menu}
+        title={t.ui.menu}
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+      >
+        <span class="i-open"><Icon name="menu" /></span>
+        <span class="i-close"><Icon name="close" /></span>
+      </button>
     </div>
   </div>
+  <nav id="mobile-nav" class="mobile-nav" aria-label="Seções" hidden>
+    <div class="container">
+      {links.map(([id, label]) => <a href={`#${id}`} class="mono">{label}</a>)}
+    </div>
+  </nav>
 </header>
 
 <script>
+  // Menu de seções no mobile: fecha ao escolher uma seção, com Esc ou ao alargar a tela.
+  const menuBtn = document.querySelector<HTMLButtonElement>('.menu-toggle');
+  const mobileNav = document.querySelector<HTMLElement>('#mobile-nav');
+  const setMenu = (open: boolean) => {
+    if (!menuBtn || !mobileNav) return;
+    mobileNav.hidden = !open;
+    menuBtn.setAttribute('aria-expanded', String(open));
+  };
+  menuBtn?.addEventListener('click', () => setMenu(mobileNav?.hidden ?? false));
+  mobileNav?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setMenu(false);
+  });
+  matchMedia('(min-width: 900px)').addEventListener('change', (e) => {
+    if (e.matches) setMenu(false);
+  });
+
   const btn = document.querySelector<HTMLButtonElement>('.theme-toggle');
   btn?.addEventListener('click', () => {
     const root = document.documentElement;
@@ -99,12 +132,66 @@ const links = [
     gap: 8px;
     margin-left: auto;
   }
+  .menu-toggle {
+    display: inline-grid;
+    place-items: center;
+    width: 36px;
+    height: 34px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+  }
+  .menu-toggle:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+  .i-open,
+  .i-close {
+    line-height: 0;
+  }
+  .i-close,
+  .menu-toggle[aria-expanded='true'] .i-open {
+    display: none;
+  }
+  .menu-toggle[aria-expanded='true'] .i-close {
+    display: inline;
+  }
+  .mobile-nav {
+    border-top: 1px solid var(--border);
+    background: var(--bg);
+  }
+  .mobile-nav[hidden] {
+    display: none;
+  }
+  .mobile-nav .container {
+    display: grid;
+    padding-top: 8px;
+    padding-bottom: 12px;
+  }
+  .mobile-nav a {
+    padding: 12px 4px;
+    font-size: 0.95rem;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+  }
+  .mobile-nav a:last-child {
+    border-bottom: none;
+  }
+  .mobile-nav a:hover {
+    color: var(--accent);
+  }
   @media (min-width: 900px) {
     .nav {
       display: flex;
     }
     .actions {
       margin-left: 0;
+    }
+    .menu-toggle,
+    .mobile-nav {
+      display: none !important;
     }
   }
   .lang {

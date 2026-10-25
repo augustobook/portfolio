@@ -54,6 +54,7 @@ export interface Content {
   ui: {
     switchLang: string;
     toggleTheme: string;
+    menu: string;
     present: string;
     downloadCv: string;
     seeProjects: string;
