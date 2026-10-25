@@ -29,6 +29,7 @@ export const pt: Content = {
     role: 'Cientista de Dados · Engenheiro de IA',
     location: 'Chapada, RS · remoto',
     status: 'Aberto a oportunidades',
+    badge: { title: 'IA em produção', detail: 'LLMs · RAG · Agentes' },
     tagline:
       'Levo IA do notebook para a produção: soluções com LLMs, RAG e machine learning integradas à engenharia de dados e ao backend, com impacto mensurável no negócio.',
     terminal: {

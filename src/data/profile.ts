@@ -8,6 +8,8 @@ export const profile = {
   github: 'https://github.com/augustobook',
   // Arquivos opcionais em /public — aparecem automaticamente quando existirem.
   photo: 'foto.jpeg',
+  // Foto sem fundo usada no topo; sem ela, o topo usa a foto normal recortada em círculo.
+  photoCutout: 'foto-recorte.webp',
   cvPdf: { pt: 'curriculo-augusto-maggioni.pdf', en: 'resume-augusto-maggioni.pdf' },
   careerStart: '2021-06',
 };

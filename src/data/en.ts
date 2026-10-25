@@ -29,6 +29,7 @@ export const en: Content = {
     role: 'Data Scientist · AI Engineer',
     location: 'Chapada, RS, Brazil · remote',
     status: 'Open to opportunities',
+    badge: { title: 'AI in production', detail: 'LLMs · RAG · Agents' },
     tagline:
       'I take AI from the notebook to production: LLM, RAG and machine learning solutions built into data engineering and backend systems, with measurable business impact.',
     terminal: {

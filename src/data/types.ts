@@ -69,6 +69,8 @@ export interface Content {
     /** Linha de localização e disponibilidade abaixo do cargo. */
     location: string;
     status: string;
+    /** Selo sobre a foto, abaixo do selo de disponibilidade. */
+    badge: { title: string; detail: string };
     tagline: string;
     terminal: { file: string; role: string; focus: string[] };
   };
