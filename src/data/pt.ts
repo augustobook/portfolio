@@ -7,12 +7,12 @@ export const pt: Content = {
       'Cientista de Dados e Engenheiro de IA. LLMs, RAG, machine learning e engenharia de dados em produção. Mestre em Computação Aplicada.',
   },
   nav: {
-    about: 'sobre',
-    experience: 'experiência',
-    projects: 'projetos',
-    skills: 'habilidades',
-    education: 'formação',
-    contact: 'contato',
+    about: 'Sobre',
+    experience: 'Experiência',
+    projects: 'Projetos',
+    skills: 'Habilidades',
+    education: 'Formação',
+    contact: 'Contato',
   },
   ui: {
     switchLang: 'Read in English',
@@ -25,7 +25,7 @@ export const pt: Content = {
     all: 'Todos',
   },
   hero: {
-    kicker: 'olá, eu sou',
+    kicker: 'Olá, eu sou',
     role: 'Cientista de Dados · Engenheiro de IA',
     tagline:
       'Levo IA do notebook para a produção: soluções com LLMs, RAG e machine learning integradas à engenharia de dados e ao backend, com impacto mensurável no negócio.',

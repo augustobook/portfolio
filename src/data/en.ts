@@ -7,12 +7,12 @@ export const en: Content = {
       'Data Scientist and AI Engineer. LLMs, RAG, machine learning and data engineering in production. MSc in Applied Computing.',
   },
   nav: {
-    about: 'about',
-    experience: 'experience',
-    projects: 'projects',
-    skills: 'skills',
-    education: 'education',
-    contact: 'contact',
+    about: 'About',
+    experience: 'Experience',
+    projects: 'Projects',
+    skills: 'Skills',
+    education: 'Education',
+    contact: 'Contact',
   },
   ui: {
     switchLang: 'Ler em português',
@@ -25,7 +25,7 @@ export const en: Content = {
     all: 'All',
   },
   hero: {
-    kicker: "hi, I'm",
+    kicker: "Hi, I'm",
     role: 'Data Scientist · AI Engineer',
     tagline:
       'I take AI from the notebook to production: LLM, RAG and machine learning solutions built into data engineering and backend systems, with measurable business impact.',
