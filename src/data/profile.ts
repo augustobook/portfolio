@@ -8,7 +8,7 @@ export const profile = {
   // Preencha com seu GitHub para exibir o ícone no topo e no contato.
   github: '',
   // Arquivos opcionais em /public — aparecem automaticamente quando existirem.
-  photo: 'foto.jpg',
+  photo: 'foto.jpeg',
   cvPdf: { pt: 'curriculo-augusto-maggioni.pdf', en: 'resume-augusto-maggioni.pdf' },
   careerStart: '2021-06',
 };
