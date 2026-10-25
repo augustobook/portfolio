@@ -10,7 +10,8 @@ const { t } = Astro.props;
 const p = t.projects;
 const featured = p.items.filter((i) => i.featured);
 const others = p.items.filter((i) => !i.featured);
-const kinds = Object.keys(p.kinds) as ProjectKind[];
+// Filtros só para categorias presentes na lista (o destaque fica fora dela).
+const kinds = (Object.keys(p.kinds) as ProjectKind[]).filter((k) => others.some((i) => i.kind === k));
 const linkLabel = (kind: ProjectKind) => (kind === 'research' ? t.ui.readPaper : t.ui.visit);
 ---
 
