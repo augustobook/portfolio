@@ -1,0 +1,138 @@
+---
+import type { Content, Lang } from '../data/types';
+import { formatMonth } from '../lib/utils';
+import SectionHead from './SectionHead.astro';
+import Icon from './Icon.astro';
+
+interface Props {
+  t: Content;
+  lang: Lang;
+}
+const { t, lang } = Astro.props;
+const e = t.education;
+---
+
+<section id="education" class="section">
+  <div class="container">
+    <SectionHead num="05" title={e.title} />
+    <div class="grid">
+      {
+        e.items.map((ed) => (
+          <article class="card edu reveal">
+            <p class="when mono">
+              {formatMonth(lang, ed.start)} — {formatMonth(lang, ed.end)} · <span class="status">{ed.status}</span>
+            </p>
+            <h3>{ed.degree}</h3>
+            {ed.field && <p class="field">{ed.field}</p>}
+            <p class="school">
+              {ed.school} · {ed.location}
+            </p>
+          </article>
+        ))
+      }
+    </div>
+
+    <h3 class="sub mono">{e.publicationsTitle}</h3>
+    {
+      e.publications.map((pub) => (
+        <article class="card pub reveal">
+          <Icon name="paper" class="icon big" />
+          <div>
+            <h4>{pub.title}</h4>
+            <p class="venue mono">{pub.venue}</p>
+            <p class="summary">{pub.summary}</p>
+            <a href={pub.url} class="link mono" target="_blank" rel="noopener">
+              {t.ui.readPaper} <Icon name="external" class="icon small" />
+            </a>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .grid {
+    display: grid;
+    gap: 16px;
+  }
+  @media (min-width: 720px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .edu {
+    padding: 24px;
+    display: grid;
+    gap: 6px;
+    align-content: start;
+  }
+  .when {
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+  .status {
+    color: var(--ok);
+  }
+  h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+  .field {
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .school {
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+  .sub {
+    margin: 44px 0 16px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--accent);
+  }
+  .sub::before {
+    content: '# ';
+    color: var(--muted);
+  }
+  .pub {
+    padding: 24px;
+    display: grid;
+    gap: 18px;
+  }
+  @media (min-width: 720px) {
+    .pub {
+      grid-template-columns: auto 1fr;
+    }
+  }
+  .pub :global(.big) {
+    width: 28px;
+    height: 28px;
+    color: var(--accent);
+  }
+  h4 {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.35;
+  }
+  .venue {
+    margin-top: 4px;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+  .summary {
+    margin: 10px 0 12px;
+    color: var(--muted);
+  }
+  .link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+  }
+  .link :global(.small) {
+    width: 14px;
+    height: 14px;
+  }
+</style>

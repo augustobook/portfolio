@@ -1,0 +1,31 @@
+name: Deploy na AWS EC2 (Docker)
+
+# Atualiza o container na EC2 via SSH a cada push na main.
+# Secrets necessários (Settings → Secrets and variables → Actions):
+#   EC2_HOST     IP ou DNS público da instância
+#   EC2_USER     usuário SSH (ex.: ec2-user ou ubuntu)
+#   EC2_SSH_KEY  conteúdo da chave privada .pem
+#   SITE_URL     URL pública do site (ex.: https://augustomaggioni.dev)
+# O repositório precisa estar clonado em ~/curriculo na instância (veja o README).
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: ${{ vars.EC2_ENABLED == 'true' }}
+    steps:
+      - uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            set -e
+            cd ~/curriculo
+            git pull --ff-only
+            SITE_URL='${{ secrets.SITE_URL }}' docker compose up -d --build
+            docker image prune -f

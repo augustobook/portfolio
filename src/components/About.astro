@@ -1,0 +1,79 @@
+---
+import type { Content } from '../data/types';
+import { profile } from '../data/profile';
+import { monthsBetween } from '../lib/utils';
+import SectionHead from './SectionHead.astro';
+
+interface Props {
+  t: Content;
+}
+const { t } = Astro.props;
+const years = Math.floor(monthsBetween(profile.careerStart) / 12);
+---
+
+<section id="about" class="section">
+  <div class="container">
+    <SectionHead num="01" title={t.about.title} />
+    <div class="grid reveal">
+      <div class="text">
+        {t.about.paragraphs.map((p) => <p set:html={p} />)}
+      </div>
+      <ul class="stats">
+        {
+          t.about.stats.map((s) => (
+            <li class="card">
+              <span class="value">{s.value.replace('{years}', String(years))}</span>
+              <span class="label">{s.label}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .grid {
+    display: grid;
+    gap: 36px;
+  }
+  @media (min-width: 960px) {
+    .grid {
+      grid-template-columns: 1.3fr 1fr;
+      gap: 56px;
+    }
+  }
+  .text {
+    display: grid;
+    gap: 16px;
+    color: var(--muted);
+    font-size: 1.05rem;
+    max-width: 65ch;
+  }
+  .stats {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    align-content: start;
+  }
+  .stats li {
+    padding: 18px;
+    display: grid;
+    gap: 4px;
+  }
+  .value {
+    font-family: var(--font-mono);
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+  .label {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+</style>

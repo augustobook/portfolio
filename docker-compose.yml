@@ -1,0 +1,11 @@
+services:
+  curriculo:
+    build:
+      context: .
+      args:
+        SITE_URL: ${SITE_URL:-http://localhost}
+    image: curriculo:latest
+    container_name: curriculo
+    ports:
+      - "${PORT:-80}:80"
+    restart: unless-stopped

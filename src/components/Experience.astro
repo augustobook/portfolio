@@ -1,0 +1,148 @@
+---
+import type { Content, Lang } from '../data/types';
+import { formatDuration, formatMonth, monthsBetween } from '../lib/utils';
+import SectionHead from './SectionHead.astro';
+import Icon from './Icon.astro';
+
+interface Props {
+  t: Content;
+  lang: Lang;
+}
+const { t, lang } = Astro.props;
+---
+
+<section id="experience" class="section">
+  <div class="container">
+    <SectionHead num="02" title={t.experience.title} />
+    <ol class="timeline">
+      {
+        t.experience.items.map((job) => (
+          <li class="item reveal">
+            <div class="when mono">
+              <span class:list={['marker', { current: !job.end }]} />
+              <span>
+                {formatMonth(lang, job.start)} — {job.end ? formatMonth(lang, job.end) : t.ui.present}
+              </span>
+              <span class="duration">{formatDuration(lang, monthsBetween(job.start, job.end))}</span>
+            </div>
+            <div class="body">
+              <h3>{job.role}</h3>
+              <p class="company">
+                <strong>{job.company}</strong>
+                <span class="loc">
+                  <Icon name="pin" class="icon small" /> {job.location}
+                </span>
+              </p>
+              <ul class="bullets">
+                {job.bullets.map((b) => <li set:html={b} />)}
+              </ul>
+              <ul class="chips">
+                {job.stack.map((s) => <li class="chip">{s}</li>)}
+              </ul>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 40px;
+  }
+  .item {
+    display: grid;
+    gap: 12px;
+    position: relative;
+  }
+  @media (min-width: 860px) {
+    .item {
+      grid-template-columns: 220px 1fr;
+      gap: 32px;
+    }
+  }
+  .when {
+    font-size: 0.8rem;
+    color: var(--muted);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 10px;
+    align-content: start;
+  }
+  @media (min-width: 860px) {
+    .when {
+      flex-direction: column;
+      align-items: flex-start;
+      padding-top: 4px;
+    }
+  }
+  .marker {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    background: var(--bg);
+  }
+  .marker.current {
+    background: var(--ok);
+    border-color: var(--ok);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--ok) 20%, transparent);
+  }
+  .duration {
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 0.72rem;
+  }
+  .body {
+    padding-left: 18px;
+    border-left: 1px solid var(--border);
+  }
+  h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+  .company {
+    margin-top: 4px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 14px;
+    align-items: center;
+  }
+  .loc {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  .loc :global(.small) {
+    width: 14px;
+    height: 14px;
+  }
+  .bullets {
+    margin: 14px 0 16px;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 8px;
+    color: var(--muted);
+  }
+  .bullets li {
+    position: relative;
+    padding-left: 20px;
+  }
+  .bullets li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+</style>

@@ -1,0 +1,161 @@
+---
+import type { Content, Lang } from '../data/types';
+import { withBase } from '../lib/utils';
+import Icon from './Icon.astro';
+
+interface Props {
+  t: Content;
+  lang: Lang;
+}
+const { t, lang } = Astro.props;
+const otherHref = withBase(lang === 'pt' ? '/en/' : '/');
+const links = [
+  ['about', t.nav.about],
+  ['experience', t.nav.experience],
+  ['projects', t.nav.projects],
+  ['skills', t.nav.skills],
+  ['education', t.nav.education],
+  ['contact', t.nav.contact],
+] as const;
+---
+
+<header class="site-header">
+  <div class="container bar">
+    <a href="#top" class="logo mono" aria-label="Augusto Maggioni">
+      <span class="prompt">&gt;_</span> augusto<span class="dim">.maggioni</span>
+    </a>
+    <nav aria-label="Seções" class="nav">
+      {links.map(([id, label]) => <a href={`#${id}`} class="mono">{label}</a>)}
+    </nav>
+    <div class="actions">
+      <a href={otherHref} class="lang mono" hreflang={lang === 'pt' ? 'en' : 'pt-BR'} title={t.ui.switchLang}>
+        <span class:list={{ on: lang === 'pt' }}>PT</span><span class="sep">/</span><span class:list={{ on: lang === 'en' }}>EN</span>
+      </a>
+      <button type="button" class="theme-toggle" aria-label={t.ui.toggleTheme} title={t.ui.toggleTheme}>
+        <span class="i-sun"><Icon name="sun" /></span>
+        <span class="i-moon"><Icon name="moon" /></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('.theme-toggle');
+  btn?.addEventListener('click', () => {
+    const root = document.documentElement;
+    const current =
+      root.dataset.theme ?? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    const next = current === 'dark' ? 'light' : 'dark';
+    root.dataset.theme = next;
+    try {
+      localStorage.setItem('theme', next);
+    } catch {}
+  });
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    backdrop-filter: saturate(160%) blur(10px);
+    -webkit-backdrop-filter: saturate(160%) blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    height: 64px;
+  }
+  .logo {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--text);
+    white-space: nowrap;
+  }
+  .prompt {
+    color: var(--accent);
+  }
+  .dim {
+    color: var(--muted);
+  }
+  .nav {
+    display: none;
+    gap: 22px;
+    margin-left: auto;
+  }
+  .nav a {
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+  .nav a:hover {
+    color: var(--accent);
+  }
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+  }
+  @media (min-width: 900px) {
+    .nav {
+      display: flex;
+    }
+    .actions {
+      margin-left: 0;
+    }
+  }
+  .lang {
+    font-size: 0.8rem;
+    color: var(--muted);
+    padding: 7px 10px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .lang .on {
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .lang .sep {
+    margin: 0 3px;
+    opacity: 0.5;
+  }
+  .theme-toggle {
+    display: inline-grid;
+    place-items: center;
+    width: 36px;
+    height: 34px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+  }
+  .theme-toggle:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+  .i-moon {
+    display: none;
+  }
+  .i-sun,
+  .i-moon {
+    line-height: 0;
+  }
+  @media (prefers-color-scheme: dark) {
+    :global(:root:not([data-theme='light'])) .i-sun {
+      display: none;
+    }
+    :global(:root:not([data-theme='light'])) .i-moon {
+      display: inline;
+    }
+  }
+  :global(:root[data-theme='dark']) .i-sun {
+    display: none;
+  }
+  :global(:root[data-theme='dark']) .i-moon {
+    display: inline;
+  }
+</style>

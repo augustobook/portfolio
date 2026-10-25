@@ -1,0 +1,62 @@
+---
+import type { Content } from '../data/types';
+import SectionHead from './SectionHead.astro';
+
+interface Props {
+  t: Content;
+}
+const { t } = Astro.props;
+---
+
+<section id="skills" class="section">
+  <div class="container">
+    <SectionHead num="04" title={t.skills.title} />
+    <div class="grid">
+      {
+        t.skills.groups.map((g) => (
+          <div class="group card reveal">
+            <h3 class="mono">{g.title}</h3>
+            <ul class="chips">
+              {g.items.map((i) => (
+                <li class="chip">{i}</li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .grid {
+    display: grid;
+    gap: 16px;
+  }
+  @media (min-width: 720px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1080px) {
+    .grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .group {
+    padding: 22px;
+  }
+  h3 {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+  h3::before {
+    content: '# ';
+    color: var(--muted);
+  }
+  .chip {
+    color: var(--text);
+  }
+</style>

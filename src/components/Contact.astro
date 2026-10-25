@@ -1,0 +1,69 @@
+---
+import type { Content } from '../data/types';
+import { profile } from '../data/profile';
+import SectionHead from './SectionHead.astro';
+import Icon from './Icon.astro';
+
+interface Props {
+  t: Content;
+}
+const { t } = Astro.props;
+---
+
+<section id="contact" class="section">
+  <div class="container">
+    <SectionHead num="06" title={t.contact.title} />
+    <div class="box card reveal">
+      <p class="text">{t.contact.text}</p>
+      <a href={`mailto:${profile.email}`} class="email mono">{profile.email}</a>
+      <div class="actions">
+        <a href={`mailto:${profile.email}`} class="btn btn-primary"><Icon name="mail" /> {t.contact.email}</a>
+        <a href={profile.linkedin} class="btn" target="_blank" rel="noopener"><Icon name="linkedin" /> {t.contact.linkedin}</a>
+        {
+          profile.github && (
+            <a href={profile.github} class="btn" target="_blank" rel="noopener">
+              <Icon name="github" /> GitHub
+            </a>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container mono">
+    © {new Date().getFullYear()} {profile.name} · {t.footer}
+  </div>
+</footer>
+
+<style>
+  .box {
+    padding: clamp(24px, 5vw, 48px);
+    display: grid;
+    gap: 18px;
+    justify-items: start;
+    background:
+      radial-gradient(600px 200px at 100% 0%, var(--accent-soft), transparent),
+      var(--surface);
+  }
+  .text {
+    font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+    max-width: 52ch;
+  }
+  .email {
+    font-size: clamp(0.95rem, 3vw, 1.4rem);
+    word-break: break-all;
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .footer {
+    border-top: 1px solid var(--border);
+    padding: 28px 0 36px;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+</style>
