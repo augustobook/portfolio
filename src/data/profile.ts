@@ -3,7 +3,7 @@ export const profile = {
   name: 'Augusto Felipe Maggioni',
   shortName: 'Augusto Maggioni',
   initials: 'AM',
-  email: 'augustofelipe1001@gmail.com',
+  email: 'augustofelipemaggioni@gmail.com',
   linkedin: 'https://www.linkedin.com/in/augustofm',
   // Preencha com seu GitHub para exibir o ícone no topo e no contato.
   github: '',
