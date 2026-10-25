@@ -107,7 +107,7 @@ export const en: Content = {
         stack: ['Python', 'SQL Server', 'Redis', 'Kafka', 'Docker', 'Linux', 'AWS EC2', 'MongoDB', 'Networking'],
       },
       {
-        role: 'Data Scientist & Data Engineer (part-time)',
+        role: 'Data Scientist & Data Engineer',
         company: 'Cooperando · Tua Opinião',
         location: 'Passo Fundo, Brazil',
         start: '2021-06',

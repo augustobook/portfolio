@@ -107,7 +107,7 @@ export const pt: Content = {
         stack: ['Python', 'SQL Server', 'Redis', 'Kafka', 'Docker', 'Linux', 'AWS EC2', 'MongoDB', 'Redes'],
       },
       {
-        role: 'Cientista e Engenheiro de Dados (meio período)',
+        role: 'Cientista e Engenheiro de Dados',
         company: 'Cooperando · Tua Opinião',
         location: 'Passo Fundo, RS',
         start: '2021-06',
