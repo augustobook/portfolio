@@ -10,16 +10,14 @@ const { t } = Astro.props;
 const p = t.projects;
 const featured = p.items.filter((i) => i.featured);
 const others = p.items.filter((i) => !i.featured);
-// Filtros só para categorias presentes na lista (o destaque fica fora dela).
-const kinds = (Object.keys(p.kinds) as ProjectKind[]).filter((k) => others.some((i) => i.kind === k));
 const linkLabel = (kind: ProjectKind) => (kind === 'research' ? t.ui.readPaper : t.ui.visit);
 ---
 
 <section id="projects" class="section">
   <div class="container">
     <SectionHead num="03" title={p.title} />
-    <p class="intro">{p.intro}</p>
 
+    {featured.length > 0 && <h3 class="sub mono">{p.featuredTitle}</h3>}
     {
       featured.map((proj) => (
         <article class="featured card reveal" data-kind={proj.kind}>
@@ -57,25 +55,14 @@ const linkLabel = (kind: ProjectKind) => (kind === 'research' ? t.ui.readPaper :
       ))
     }
 
-    <div class="filters" role="group" aria-label={p.title}>
-      <button type="button" class="filter mono active" data-filter="all" aria-pressed="true">{t.ui.all}</button>
-      {
-        kinds.map((k) => (
-          <button type="button" class="filter mono" data-filter={k} aria-pressed="false">
-            {p.kinds[k]}
-          </button>
-        ))
-      }
-    </div>
+    <h3 class="sub mono">{p.industryTitle}</h3>
+    <p class="note">{p.industryNote}</p>
 
     <div class="grid">
       {
         others.map((proj) => (
           <article class="project card reveal" data-kind={proj.kind}>
-            <div class="top">
-              <span class={`badge ${proj.kind}`}>{p.kinds[proj.kind]}</span>
-              <span class="context mono">{proj.context}</span>
-            </div>
+            <span class="context mono">{proj.context}</span>
             <h3>{proj.title}</h3>
             <p class="summary">{proj.summary}</p>
             <dl class="psr compact">
@@ -109,29 +96,22 @@ const linkLabel = (kind: ProjectKind) => (kind === 'research' ? t.ui.readPaper :
   </div>
 </section>
 
-<script>
-  const buttons = document.querySelectorAll<HTMLButtonElement>('.filter');
-  const cards = document.querySelectorAll<HTMLElement>('.project');
-  buttons.forEach((btn) =>
-    btn.addEventListener('click', () => {
-      const f = btn.dataset.filter;
-      buttons.forEach((b) => {
-        const on = b === btn;
-        b.classList.toggle('active', on);
-        b.setAttribute('aria-pressed', String(on));
-      });
-      cards.forEach((c) => {
-        c.hidden = f !== 'all' && c.dataset.kind !== f;
-      });
-    }),
-  );
-</script>
-
 <style>
-  .intro {
+  .sub {
+    margin: 0 0 16px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--accent);
+  }
+  .sub::before {
+    content: '# ';
     color: var(--muted);
+  }
+  .note {
+    color: var(--muted);
+    font-size: 0.92rem;
     max-width: 70ch;
-    margin: -12px 0 28px;
+    margin: -8px 0 20px;
   }
   .badge {
     display: inline-block;
@@ -164,7 +144,7 @@ const linkLabel = (kind: ProjectKind) => (kind === 'research' ? t.ui.readPaper :
     display: grid;
     gap: 28px;
     padding: 28px;
-    margin-bottom: 36px;
+    margin-bottom: 48px;
     border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
   }
   @media (min-width: 900px) {
@@ -209,31 +189,6 @@ const linkLabel = (kind: ProjectKind) => (kind === 'research' ? t.ui.readPaper :
     font-size: 0.92rem;
   }
 
-  .filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 20px;
-  }
-  .filter {
-    font-size: 0.8rem;
-    padding: 7px 12px;
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    background: var(--surface);
-    color: var(--muted);
-    cursor: pointer;
-  }
-  .filter:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-  .filter.active {
-    background: var(--accent-soft);
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-
   .grid {
     display: grid;
     gap: 16px;
@@ -257,16 +212,6 @@ const linkLabel = (kind: ProjectKind) => (kind === 'research' ? t.ui.readPaper :
   }
   .project:hover {
     border-color: color-mix(in srgb, var(--accent) 50%, var(--border));
-  }
-  .project[hidden] {
-    display: none;
-  }
-  .top {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    align-items: center;
-    justify-content: space-between;
   }
   .project h3 {
     font-size: 1.1rem;

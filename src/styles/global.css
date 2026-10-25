@@ -272,7 +272,6 @@ img {
 @media print {
   .site-header,
   .hero-actions,
-  .filters,
   .theme-toggle,
   .footer {
     display: none !important;

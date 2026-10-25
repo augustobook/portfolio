@@ -57,13 +57,15 @@ export interface Content {
     seeProjects: string;
     visit: string;
     readPaper: string;
-    all: string;
   };
   hero: {
     kicker: string;
     role: string;
+    /** Linha de localização e disponibilidade abaixo do cargo. */
+    location: string;
+    status: string;
     tagline: string;
-    terminal: { file: string; role: string; focus: string[]; location: string; status: string };
+    terminal: { file: string; role: string; focus: string[] };
   };
   about: {
     title: string;
@@ -74,7 +76,10 @@ export interface Content {
   experience: { title: string; items: Experience[] };
   projects: {
     title: string;
-    intro: string;
+    /** Subtítulos dos blocos: projeto em destaque e projetos corporativos. */
+    featuredTitle: string;
+    industryTitle: string;
+    industryNote: string;
     kinds: Record<ProjectKind, string>;
     labels: { problem: string; solution: string; result: string };
     items: Project[];

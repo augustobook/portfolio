@@ -24,6 +24,10 @@ const term = t.hero.terminal;
       <p class="kicker mono"><span class="accent">$</span> {t.hero.kicker}</p>
       <h1>{profile.name}</h1>
       <p class="role">{t.hero.role}</p>
+      <p class="meta mono">
+        <span><Icon name="pin" class="icon small" /> {t.hero.location}</span>
+        <span class="open"><span class="led"></span> {t.hero.status}</span>
+      </p>
       <p class="tagline">{t.hero.tagline}</p>
       <div class="hero-actions">
         <a href="#projects" class="btn btn-primary">{t.ui.seeProjects} <Icon name="arrow" /></a>
@@ -45,9 +49,7 @@ const term = t.hero.terminal;
 {'{'}
   <span class="k">"name"</span>: <span class="s">"{profile.shortName}"</span>,
   <span class="k">"role"</span>: <span class="s">"{term.role}"</span>,
-  <span class="k">"focus"</span>: [{term.focus.map((f, i) => <><span class="s">"{f}"</span>{i < term.focus.length - 1 ? ', ' : ''}</>)}],
-  <span class="k">"location"</span>: <span class="s">"{term.location}"</span>,
-  <span class="k">"status"</span>: <span class="ok">"● {term.status}"</span>
+  <span class="k">"focus"</span>: [{term.focus.map((f, i) => <><span class="s">"{f}"</span>{i < term.focus.length - 1 ? ', ' : ''}</>)}]
 {'}'}
 <span class="accent">$</span> <span class="cursor"></span></pre>
     </div>
@@ -123,6 +125,33 @@ const term = t.hero.terminal;
     font-weight: 600;
     color: var(--accent);
   }
+  .meta {
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .meta :global(.small) {
+    width: 15px;
+    height: 15px;
+  }
+  .open {
+    color: var(--ok);
+  }
+  .led {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--ok);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--ok) 22%, transparent);
+  }
   .tagline {
     margin-top: 18px;
     max-width: 56ch;
@@ -138,21 +167,27 @@ const term = t.hero.terminal;
   }
   .socials {
     display: flex;
-    gap: 6px;
+    gap: 8px;
   }
   .social {
     display: inline-grid;
     place-items: center;
-    width: 42px;
-    height: 42px;
+    width: 44px;
+    height: 44px;
     border-radius: 10px;
-    color: var(--muted);
-    border: 1px solid transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    transition: border-color 0.15s, color 0.15s, transform 0.15s;
   }
   .social:hover {
     color: var(--accent);
-    border-color: var(--border);
-    background: var(--surface);
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
+  .social :global(.icon) {
+    width: 20px;
+    height: 20px;
   }
 
   .terminal {

@@ -43,6 +43,12 @@ const { t } = Astro.props;
       grid-template-columns: repeat(3, 1fr);
     }
   }
+  /* O primeiro grupo (IA) ocupa duas colunas: 5 grupos fecham a grade sem buraco. */
+  @media (min-width: 720px) {
+    .group:first-child {
+      grid-column: span 2;
+    }
+  }
   .group {
     padding: 22px;
   }

@@ -22,19 +22,18 @@ export const pt: Content = {
     seeProjects: 'Ver projetos',
     visit: 'Acessar projeto',
     readPaper: 'Ler artigo',
-    all: 'Todos',
   },
   hero: {
     kicker: 'Olá, eu sou',
     role: 'Cientista de Dados · Engenheiro de IA',
+    location: 'Chapada, RS · remoto',
+    status: 'Aberto a oportunidades',
     tagline:
       'Levo IA do notebook para a produção: soluções com LLMs, RAG e machine learning integradas à engenharia de dados e ao backend, com impacto mensurável no negócio.',
     terminal: {
       file: 'perfil.json',
-      role: 'Cientista de Dados / ML Engineer',
+      role: 'Cientista de Dados / Engenheiro de IA',
       focus: ['LLMs', 'RAG', 'Machine Learning', 'Engenharia de Dados'],
-      location: 'Chapada, RS · remoto',
-      status: 'aberto a oportunidades',
     },
   },
   about: {
@@ -47,7 +46,7 @@ export const pt: Content = {
     stats: [
       { value: '{years}+', label: 'anos de experiência com dados e IA' },
       { value: '80%+', label: 'menos tempo de análise manual de documentos' },
-      { value: 'Milhões', label: 'de registros processados por dia' },
+      { value: '3', label: 'empresas com dados e IA em produção' },
       { value: 'MSc', label: 'Computação Aplicada: Ciência de Dados e IA' },
     ],
   },
@@ -60,13 +59,11 @@ export const pt: Content = {
         location: 'Brasília, DF',
         start: '2024-10',
         bullets: [
-          'Desenvolvi soluções de dados e IA para automação de processos jurídicos, aumentando a eficiência operacional e a geração de valor para o negócio',
-          'Estruturei pipelines de dados e desenvolvi modelos de machine learning para extração e análise de informações relevantes',
-          'Implementei soluções com LLMs (Gemini e modelos open-source) e RAG com LangChain para leitura, interpretação e geração automatizada de documentos',
-          'Construí a camada de busca semântica com pgvector, Qdrant, Chroma e Elasticsearch',
+          'Desenvolvi soluções de dados e IA para automação de processos jurídicos, apoiando a tomada de decisão nas áreas jurídica e operacional',
+          'Implementei soluções com LLMs (Gemini e modelos open-source) e RAG com LangChain, com busca semântica em pgvector, Qdrant, Chroma e Elasticsearch, para leitura, interpretação e geração de documentos',
           'Estruturei a avaliação das soluções de LLM/RAG: base de referência para testes de regressão, métricas de recuperação, revisão humana por especialistas e monitoramento de custo e latência',
+          'Estruturei pipelines de dados e modelos de machine learning para extração e análise de informações',
           'Automatizei processos críticos, reduzindo em <strong>80%+</strong> o tempo de análise manual de documentos',
-          'Apoiei a tomada de decisão nas áreas jurídica e operacional com soluções orientadas a dados',
         ],
         stack: ['Python', 'LLMs', 'Gemini', 'LLMs open-source', 'RAG', 'LangChain', 'pgvector', 'Qdrant', 'Chroma', 'Elasticsearch', 'NLP', 'FastAPI', 'PostgreSQL', 'Docker', 'Kubernetes'],
       },
@@ -118,8 +115,9 @@ export const pt: Content = {
   },
   projects: {
     title: 'Projetos',
-    intro:
-      'Uma seleção do que já construí. Os projetos corporativos estão descritos de forma genérica, respeitando a confidencialidade de cada empresa.',
+    featuredTitle: 'Projeto pessoal · no ar',
+    industryTitle: 'Na indústria',
+    industryNote: 'Descritos de forma genérica, respeitando a confidencialidade de cada empresa.',
     kinds: { public: 'Publicado', corporate: 'Corporativo', research: 'Pesquisa' },
     labels: { problem: 'Problema', solution: 'Solução', result: 'Resultado' },
     items: [
@@ -144,10 +142,10 @@ export const pt: Content = {
         context: 'Vert Analytics',
         kind: 'corporate',
         summary: 'Automação da leitura, interpretação e geração de documentos jurídicos.',
-        problem: 'As equipes jurídicas gastavam horas lendo e analisando grandes volumes de documentos manualmente.',
+        problem: 'Equipes jurídicas gastavam horas lendo grandes volumes de documentos manualmente.',
         solution:
-          'Pipelines de extração e estruturação de dados, RAG com LangChain e busca vetorial (pgvector, Qdrant, Chroma, Elasticsearch), e LLMs (Gemini e open-source) para interpretar e gerar documentos, expostos via APIs REST. A qualidade é acompanhada com base de referência, métricas de recuperação e revisão humana, além do monitoramento de custo e latência.',
-        result: 'Redução de mais de 80% no tempo de análise manual, além de apoio à decisão nas áreas jurídica e operacional.',
+          'RAG com busca vetorial sobre a base documental e LLMs para interpretar e gerar documentos via APIs REST, com qualidade medida por base de referência e revisão humana.',
+        result: 'Mais de 80% de redução no tempo de análise manual.',
         stack: ['Python', 'LLMs', 'RAG', 'LangChain', 'pgvector', 'Qdrant', 'NLP', 'PostgreSQL', 'Docker', 'Kubernetes'],
       },
       {
@@ -156,9 +154,8 @@ export const pt: Content = {
         kind: 'corporate',
         summary: 'Backend orientado a eventos para coordenar veículos, guinchos e clientes.',
         problem: 'Coordenar guinchos, veículos e clientes exige informação atualizada a cada segundo.',
-        solution:
-          'Backend em Python com Server-Sent Events, mensageria com Kafka, cache em Redis, busca com Meilisearch e PostgreSQL otimizado.',
-        result: 'Acompanhamento em tempo real dos atendimentos, sobre uma arquitetura resiliente e de alta disponibilidade.',
+        solution: 'Backend em Python com Server-Sent Events, mensageria com Kafka, cache em Redis e PostgreSQL otimizado.',
+        result: 'Atendimentos acompanhados em tempo real, com alta disponibilidade.',
         stack: ['Python', 'SSE', 'Kafka', 'Redis', 'PostgreSQL', 'Meilisearch', 'Docker'],
       },
       {
@@ -166,23 +163,10 @@ export const pt: Content = {
         context: 'M9 Inteligência em Mobilidade',
         kind: 'corporate',
         summary: 'Processamento distribuído de dados de rastreadores e vídeo embarcado.',
-        problem: 'Milhões de registros por dia chegando de rastreadores e câmeras embarcadas, sem margem para perda de dados.',
-        solution:
-          'Serviços distribuídos em Python para ingestão contínua, integrações com dispositivos, SQL Server modelado para performance e infraestrutura Linux/AWS EC2.',
-        result: 'Milhões de registros processados por dia de forma contínua, com alta disponibilidade.',
+        problem: 'Milhões de registros por dia vindos de rastreadores e câmeras embarcadas, sem margem para perda de dados.',
+        solution: 'Serviços distribuídos em Python para ingestão contínua, com SQL Server modelado para performance em Linux/AWS EC2.',
+        result: 'Ingestão contínua de milhões de registros por dia.',
         stack: ['Python', 'Kafka', 'Redis', 'SQL Server', 'Docker', 'AWS EC2', 'Linux'],
-      },
-      {
-        title: 'Detecção de arritmias cardíacas',
-        context: 'Publicação científica',
-        kind: 'research',
-        url: 'https://interfaces.unileao.edu.br/index.php/revista-interfaces/article/view/1875',
-        summary: 'Redes neurais híbridas aplicadas a sinais de ECG (derivação I).',
-        problem: 'Detectar arritmias cardíacas a partir de um único sinal de ECG, a derivação I.',
-        solution:
-          'Processamento de sinais biomédicos, extração de características e redes neurais híbridas para classificar padrões cardíacos.',
-        result: 'Artigo publicado na Revista Interfaces: Saúde, Humanas e Tecnologia.',
-        stack: ['Python', 'Deep Learning', 'Redes neurais híbridas', 'Sinais biomédicos'],
       },
     ],
   },
