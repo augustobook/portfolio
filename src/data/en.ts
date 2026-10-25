@@ -62,10 +62,10 @@ export const en: Content = {
           'Built data and AI solutions to automate legal processes, supporting legal and operational decision-making',
           'Implemented LLM (Gemini and open-source models) and RAG solutions with LangChain, with semantic search on pgvector, Qdrant, Chroma and Elasticsearch, to read, interpret and generate documents',
           'Set up evaluation for the LLM/RAG systems: a reference set for regression testing, retrieval metrics, expert human review and cost and latency monitoring',
-          'Designed data pipelines and machine learning models to extract and analyze information',
+          'Built crawlers and web scrapers for courts and legal websites, plus data pipelines and machine learning models to extract and analyze information',
           'Automated critical processes, cutting manual document review time by <strong>80%+</strong>',
         ],
-        stack: ['Python', 'LLMs', 'Gemini', 'Open-source LLMs', 'RAG', 'LangChain', 'pgvector', 'Qdrant', 'Chroma', 'Elasticsearch', 'NLP', 'FastAPI', 'PostgreSQL', 'Docker', 'Kubernetes'],
+        stack: ['Python', 'LLMs', 'Gemini', 'Open-source LLMs', 'RAG', 'LangChain', 'Web scraping', 'pgvector', 'Qdrant', 'Chroma', 'Elasticsearch', 'NLP', 'FastAPI', 'PostgreSQL', 'Docker', 'Kubernetes'],
       },
       {
         role: 'Full-Stack Data & AI Developer',
@@ -147,6 +147,7 @@ export const en: Content = {
         result:
           'Manual document review time cut by more than <strong>80%</strong>, with better support for legal and operational decisions.',
         highlights: [
+          'Crawlers and web scrapers for courts and legal websites to collect cases and documents',
           'Data extraction and structuring pipelines for legal documents',
           'RAG with LangChain and semantic search on pgvector, Qdrant, Chroma and Elasticsearch',
           'LLMs (Gemini and open-source models) to read, interpret and generate documents',
@@ -155,7 +156,7 @@ export const en: Content = {
           'Continuous evaluation: a reference set for regression testing, retrieval metrics, expert human review and cost and latency monitoring',
           'Containerized deployment with Docker and Kubernetes',
         ],
-        stack: ['Python', 'LLMs', 'Gemini', 'RAG', 'LangChain', 'pgvector', 'Qdrant', 'Chroma', 'Elasticsearch', 'NLP', 'FastAPI', 'PostgreSQL', 'Docker', 'Kubernetes'],
+        stack: ['Python', 'LLMs', 'Gemini', 'RAG', 'LangChain', 'Web scraping', 'pgvector', 'Qdrant', 'Chroma', 'Elasticsearch', 'NLP', 'FastAPI', 'PostgreSQL', 'Docker', 'Kubernetes'],
       },
       {
         title: 'Real-time tow-truck management',

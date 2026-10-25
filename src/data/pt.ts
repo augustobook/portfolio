@@ -62,10 +62,10 @@ export const pt: Content = {
           'Desenvolvi soluções de dados e IA para automação de processos jurídicos, apoiando a tomada de decisão nas áreas jurídica e operacional',
           'Implementei soluções com LLMs (Gemini e modelos open-source) e RAG com LangChain, com busca semântica em pgvector, Qdrant, Chroma e Elasticsearch, para leitura, interpretação e geração de documentos',
           'Estruturei a avaliação das soluções de LLM/RAG: base de referência para testes de regressão, métricas de recuperação, revisão humana por especialistas e monitoramento de custo e latência',
-          'Estruturei pipelines de dados e modelos de machine learning para extração e análise de informações',
+          'Desenvolvi crawlers e web scraping de tribunais e sites jurídicos, e estruturei pipelines de dados e modelos de machine learning para extração e análise de informações',
           'Automatizei processos críticos, reduzindo em <strong>80%+</strong> o tempo de análise manual de documentos',
         ],
-        stack: ['Python', 'LLMs', 'Gemini', 'LLMs open-source', 'RAG', 'LangChain', 'pgvector', 'Qdrant', 'Chroma', 'Elasticsearch', 'NLP', 'FastAPI', 'PostgreSQL', 'Docker', 'Kubernetes'],
+        stack: ['Python', 'LLMs', 'Gemini', 'LLMs open-source', 'RAG', 'LangChain', 'Web scraping', 'pgvector', 'Qdrant', 'Chroma', 'Elasticsearch', 'NLP', 'FastAPI', 'PostgreSQL', 'Docker', 'Kubernetes'],
       },
       {
         role: 'Desenvolvedor Full-Stack de Dados e IA',
@@ -148,6 +148,7 @@ export const pt: Content = {
         result:
           'Redução de mais de <strong>80%</strong> no tempo de análise manual de documentos, além de apoio à tomada de decisão nas áreas jurídica e operacional.',
         highlights: [
+          'Crawlers e web scraping de tribunais e sites jurídicos para coletar processos e documentos',
           'Pipelines de extração e estruturação de dados a partir de documentos jurídicos',
           'RAG com LangChain e busca semântica em pgvector, Qdrant, Chroma e Elasticsearch',
           'Uso de LLMs (Gemini e modelos open-source) para ler, interpretar e gerar documentos',
@@ -156,7 +157,7 @@ export const pt: Content = {
           'Avaliação contínua: base de referência para testes de regressão, métricas de recuperação, revisão humana por especialistas e monitoramento de custo e latência',
           'Deploy em contêineres com Docker e Kubernetes',
         ],
-        stack: ['Python', 'LLMs', 'Gemini', 'RAG', 'LangChain', 'pgvector', 'Qdrant', 'Chroma', 'Elasticsearch', 'NLP', 'FastAPI', 'PostgreSQL', 'Docker', 'Kubernetes'],
+        stack: ['Python', 'LLMs', 'Gemini', 'RAG', 'LangChain', 'Web scraping', 'pgvector', 'Qdrant', 'Chroma', 'Elasticsearch', 'NLP', 'FastAPI', 'PostgreSQL', 'Docker', 'Kubernetes'],
       },
       {
         title: 'Gestão de guinchos em tempo real',
