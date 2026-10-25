@@ -17,10 +17,10 @@ const linkLabel = (kind: ProjectKind) => (kind === 'research' ? t.ui.readPaper :
   <div class="container">
     <SectionHead num="03" title={p.title} />
 
-    {featured.length > 0 && <h3 class="sub mono">{p.featuredTitle}</h3>}
+    {featured.length > 0 && <h3 class="group-title">{p.featuredTitle}</h3>}
     {
       featured.map((proj) => (
-        <article class="featured card reveal" data-kind={proj.kind}>
+        <article class="featured split card reveal" data-kind={proj.kind}>
           <div class="f-main">
             <span class={`badge ${proj.kind}`}>{p.kinds[proj.kind]}</span>
             <h3>{proj.title}</h3>
@@ -55,39 +55,42 @@ const linkLabel = (kind: ProjectKind) => (kind === 'research' ? t.ui.readPaper :
       ))
     }
 
-    <h3 class="sub mono">{p.industryTitle}</h3>
+    <h3 class="group-title">{p.industryTitle}</h3>
     <p class="note">{p.industryNote}</p>
 
-    <div class="grid">
+    <div class="list">
       {
         others.map((proj) => (
-          <article class="project card reveal" data-kind={proj.kind}>
-            <span class="context mono">{proj.context}</span>
-            <h3>{proj.title}</h3>
-            <p class="summary">{proj.summary}</p>
-            <dl class="psr compact">
-              <div>
-                <dt class="mono">{p.labels.problem}</dt>
-                <dd>{proj.problem}</dd>
+          <article class="project split card reveal" data-kind={proj.kind}>
+            <div class="f-main">
+              <p class="company mono">{proj.context}</p>
+              <h3>{proj.title}</h3>
+              <p class="summary">{proj.summary}</p>
+              <dl class="psr">
+                <div>
+                  <dt class="mono">{p.labels.problem}</dt>
+                  <dd>{proj.problem}</dd>
+                </div>
+                <div>
+                  <dt class="mono">{p.labels.result}</dt>
+                  <dd set:html={proj.result} />
+                </div>
+              </dl>
+              <ul class="chips">
+                {proj.stack.map((s) => (
+                  <li class="chip">{s}</li>
+                ))}
+              </ul>
+            </div>
+            {proj.highlights && (
+              <div class="built">
+                <p class="built-title mono">{p.labels.built}</p>
+                <ul>
+                  {proj.highlights.map((h) => (
+                    <li set:html={h} />
+                  ))}
+                </ul>
               </div>
-              <div>
-                <dt class="mono">{p.labels.solution}</dt>
-                <dd>{proj.solution}</dd>
-              </div>
-              <div>
-                <dt class="mono">{p.labels.result}</dt>
-                <dd>{proj.result}</dd>
-              </div>
-            </dl>
-            <ul class="chips">
-              {proj.stack.map((s) => (
-                <li class="chip">{s}</li>
-              ))}
-            </ul>
-            {proj.url && (
-              <a href={proj.url} class="link mono" target="_blank" rel="noopener">
-                {linkLabel(proj.kind)} <Icon name="external" class="icon small" />
-              </a>
             )}
           </article>
         ))
@@ -97,21 +100,25 @@ const linkLabel = (kind: ProjectKind) => (kind === 'research' ? t.ui.readPaper :
 </section>
 
 <style>
-  .sub {
-    margin: 0 0 16px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--accent);
+  .group-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
-  .sub::before {
-    content: '# ';
-    color: var(--muted);
+  .group-title::before {
+    content: '';
+    width: 4px;
+    height: 1.1em;
+    border-radius: 2px;
+    background: var(--accent);
   }
   .note {
     color: var(--muted);
-    font-size: 0.92rem;
     max-width: 70ch;
-    margin: -8px 0 20px;
+    margin: -8px 0 22px;
   }
   .badge {
     display: inline-block;
@@ -140,19 +147,22 @@ const linkLabel = (kind: ProjectKind) => (kind === 'research' ? t.ui.readPaper :
     color: var(--text);
   }
 
-  .featured {
+  /* Card em duas colunas, usado no destaque e nos projetos profissionais. */
+  .split {
     display: grid;
     gap: 28px;
     padding: 28px;
-    margin-bottom: 48px;
-    border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
   }
   @media (min-width: 900px) {
-    .featured {
+    .split {
       grid-template-columns: 1fr 1.1fr;
       padding: 36px;
       gap: 40px;
     }
+  }
+  .featured {
+    margin-bottom: 56px;
+    border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
   }
   .f-main {
     display: grid;
@@ -184,51 +194,62 @@ const linkLabel = (kind: ProjectKind) => (kind === 'research' ? t.ui.readPaper :
     margin: 0;
     color: var(--muted);
   }
-  .psr.compact {
-    gap: 10px;
-    font-size: 0.92rem;
-  }
 
-  .grid {
+  .list {
     display: grid;
-    gap: 16px;
-  }
-  @media (min-width: 720px) {
-    .grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  @media (min-width: 1080px) {
-    .grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
+    gap: 20px;
   }
   .project {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding: 22px;
-    transition: border-color 0.15s, transform 0.15s;
+    transition: border-color 0.15s;
   }
   .project:hover {
     border-color: color-mix(in srgb, var(--accent) 50%, var(--border));
   }
+  .company {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--accent);
+  }
   .project h3 {
-    font-size: 1.1rem;
-    font-weight: 700;
+    font-size: clamp(1.25rem, 2.4vw, 1.5rem);
+    font-weight: 800;
   }
-  .project .chips {
-    margin-top: auto;
-    padding-top: 6px;
+  .project .psr {
+    margin: 4px 0 6px;
   }
-  .link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.82rem;
+
+  .built {
+    padding: 22px 24px;
+    border-radius: 12px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    align-self: start;
   }
-  .link :global(.small) {
-    width: 14px;
-    height: 14px;
+  .built-title {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .built ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 10px;
+  }
+  .built li {
+    position: relative;
+    padding-left: 20px;
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+  .built li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
   }
 </style>

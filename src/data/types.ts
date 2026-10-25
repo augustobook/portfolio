@@ -23,6 +23,8 @@ export interface Project {
   solution: string;
   result: string;
   stack: string[];
+  /** O que foi desenvolvido no projeto. Aceita HTML simples. */
+  highlights?: string[];
   url?: string;
   featured?: boolean;
 }
@@ -81,7 +83,7 @@ export interface Content {
     industryTitle: string;
     industryNote: string;
     kinds: Record<ProjectKind, string>;
-    labels: { problem: string; solution: string; result: string };
+    labels: { problem: string; solution: string; result: string; built: string };
     items: Project[];
   };
   skills: { title: string; groups: { title: string; items: string[] }[] };

@@ -116,10 +116,10 @@ export const en: Content = {
   projects: {
     title: 'Projects',
     featuredTitle: 'Personal project · live',
-    industryTitle: 'In industry',
+    industryTitle: 'Professional projects',
     industryNote: "Described in general terms to respect each employer's confidentiality.",
     kinds: { public: 'Live', corporate: 'Industry', research: 'Research' },
-    labels: { problem: 'Problem', solution: 'Solution', result: 'Outcome' },
+    labels: { problem: 'Problem', solution: 'Solution', result: 'Outcome', built: 'What I built' },
     items: [
       {
         title: 'Radar Eleitoral',
@@ -141,11 +141,21 @@ export const en: Content = {
         context: 'Vert Analytics',
         kind: 'corporate',
         summary: 'Automated reading, interpretation and drafting of legal documents.',
-        problem: 'Legal teams spent hours reading large volumes of documents by hand.',
+        problem: 'Legal teams spent hours reading, interpreting and drafting large volumes of documents by hand.',
         solution:
           'RAG with vector search over the document base and LLMs to interpret and generate documents through REST APIs, with quality measured against a reference set and human review.',
-        result: 'Manual review time cut by more than 80%.',
-        stack: ['Python', 'LLMs', 'RAG', 'LangChain', 'pgvector', 'Qdrant', 'NLP', 'PostgreSQL', 'Docker', 'Kubernetes'],
+        result:
+          'Manual document review time cut by more than <strong>80%</strong>, with better support for legal and operational decisions.',
+        highlights: [
+          'Data extraction and structuring pipelines for legal documents',
+          'RAG with LangChain and semantic search on pgvector, Qdrant, Chroma and Elasticsearch',
+          'LLMs (Gemini and open-source models) to read, interpret and generate documents',
+          'Machine learning and NLP models to extract and analyze key information',
+          "REST APIs that bring the AI solutions to the company's systems and teams",
+          'Continuous evaluation: a reference set for regression testing, retrieval metrics, expert human review and cost and latency monitoring',
+          'Containerized deployment with Docker and Kubernetes',
+        ],
+        stack: ['Python', 'LLMs', 'Gemini', 'RAG', 'LangChain', 'pgvector', 'Qdrant', 'Chroma', 'Elasticsearch', 'NLP', 'FastAPI', 'PostgreSQL', 'Docker', 'Kubernetes'],
       },
       {
         title: 'Real-time tow-truck management',
@@ -154,8 +164,17 @@ export const en: Content = {
         summary: 'An event-driven backend coordinating vehicles, tow trucks and customers.',
         problem: 'Coordinating tow trucks, vehicles and customers needs information that is current to the second.',
         solution: 'A Python backend with Server-Sent Events, Kafka messaging, Redis caching and a tuned PostgreSQL database.',
-        result: 'Every service call tracked in real time, with high availability.',
-        stack: ['Python', 'SSE', 'Kafka', 'Redis', 'PostgreSQL', 'Meilisearch', 'Docker'],
+        result:
+          'Every service call tracked in real time, with faster data processing and analysis, on a resilient, highly available architecture.',
+        highlights: [
+          'Event-driven Python backend using Server-Sent Events to update vehicles, tow trucks and customers in real time',
+          'Distributed architecture with Kafka messaging and Redis caching',
+          'Fast customer and vehicle search with Meilisearch',
+          'PostgreSQL data modeling and query tuning for performance and scalability',
+          'Data pipelines and machine learning models integrated into production',
+          'Containerized Docker environment on Linux, built for high availability and resilience',
+        ],
+        stack: ['Python', 'SSE', 'Kafka', 'Redis', 'PostgreSQL', 'Meilisearch', 'Machine Learning', 'Docker', 'Linux'],
       },
       {
         title: 'Large-scale vehicle telemetry ingestion',
@@ -164,8 +183,16 @@ export const en: Content = {
         summary: 'Distributed processing of tracker and on-board video data.',
         problem: 'Millions of records a day arriving from trackers and on-board cameras, with no room for data loss.',
         solution: 'Distributed Python services for continuous ingestion, with a SQL Server schema built for performance on Linux/AWS EC2.',
-        result: 'Continuous ingestion of millions of records a day.',
-        stack: ['Python', 'Kafka', 'Redis', 'SQL Server', 'Docker', 'AWS EC2', 'Linux'],
+        result: 'Millions of records processed every day without interruption, with highly available, reliable applications.',
+        highlights: [
+          'Python backend services for distributed processing of <strong>millions of daily records</strong>',
+          'Integrations with tracking devices and on-board video systems for continuous ingestion',
+          'Algorithm and data pipeline optimization for large-scale processing',
+          'SQL Server data modeling and management for consistency, performance and availability',
+          'Distributed architecture with Kafka, Redis and Docker',
+          'Server and infrastructure management on Linux and AWS EC2',
+        ],
+        stack: ['Python', 'Kafka', 'Redis', 'SQL Server', 'MongoDB', 'Docker', 'AWS EC2', 'Linux'],
       },
     ],
   },
@@ -179,7 +206,7 @@ export const en: Content = {
       { title: 'Data Engineering', items: ['Python', 'SQL', 'Pandas', 'NumPy', 'ETL/ELT', 'Databricks', 'DuckDB', 'Web scraping', 'Plotly Dash', 'Power BI'] },
       { title: 'Backend & Distributed Systems', items: ['REST APIs', 'FastAPI', 'Flask', 'Kafka', 'Redis', 'SSE', 'Meilisearch', 'C#'] },
       { title: 'Databases', items: ['PostgreSQL', 'pgvector', 'Qdrant', 'Chroma', 'Elasticsearch', 'SQL Server', 'MongoDB', 'DynamoDB', 'MySQL', 'Neo4j'] },
-      { title: 'Cloud & DevOps', items: ['AWS EC2', 'S3', 'Lambda', 'Docker', 'Kubernetes', 'Git', 'CI/CD', 'Linux', 'Nginx'] },
+      { title: 'Cloud & DevOps', items: ['AWS EC2', 'S3', 'Lambda', 'Docker', 'Kubernetes', 'Rancher', 'Harbor', 'Git', 'CI/CD', 'Linux', 'Nginx'] },
     ],
   },
   education: {
