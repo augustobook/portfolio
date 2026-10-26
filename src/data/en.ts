@@ -23,6 +23,9 @@ export const en: Content = {
     seeProjects: 'See projects',
     visit: 'Open project',
     readPaper: 'Read paper',
+    prevImage: 'Previous screenshot',
+    nextImage: 'Next screenshot',
+    goToImage: 'Go to screenshot {n}',
   },
   hero: {
     kicker: "Hi, I'm",
@@ -125,10 +128,10 @@ export const en: Content = {
   },
   projects: {
     title: 'Projects',
-    featuredTitle: 'Personal project · live',
+    featuredTitle: 'Personal projects',
     industryTitle: 'Professional projects',
     industryNote: "Described in general terms to respect each employer's confidentiality.",
-    kinds: { public: 'Live', corporate: 'Industry', research: 'Research' },
+    kinds: { public: 'Live', personal: 'In development', corporate: 'Industry', research: 'Research' },
     labels: { problem: 'Problem', solution: 'Solution', result: 'Outcome', built: 'What I built' },
     items: [
       {
@@ -150,6 +153,30 @@ export const en: Content = {
           { src: 'projetos/radar-eleitoral/fragmentacao.webp', alt: 'Fragmentation and competition: winning margins and effective number of parties by municipality' },
         ],
         stack: ['Python', 'LangChain', 'LLM agents', 'OpenAI GPT', 'Text-to-SQL', 'DuckDB', 'PostgreSQL', 'Dash', 'Plotly', 'Pandas', 'PyArrow', 'Docker'],
+      },
+      {
+        title: 'Víbora',
+        context: 'Personal project · padel, tennis and beach tennis',
+        kind: 'personal',
+        featured: true,
+        summary:
+          'A platform for racket sports with two sides: an app where players find games, book courts, compete and track their progress, and a dashboard where clubs run their schedule, tournaments, lessons, shop and player relationships. Alongside it, a computer vision track that analyzes match video.',
+        problem:
+          'Padel clubs run bookings, tournaments and lessons on spreadsheets and WhatsApp groups, and amateur players have no way to find partners at their level or measure their progress fairly.',
+        solution:
+          'A modular FastAPI and PostgreSQL backend with 25 domain modules: JWT authentication with rotating refresh tokens, bookings with conflict checks, tournaments with automatic brackets, groups and knockout rounds, round-robin "americano" events, compatibility-based matchmaking, rating-based rankings and notifications. The frontend is Next.js and React with TypeScript. On the computer vision side, YOLO11-pose and ByteTrack track the players, a homography maps pixels to court meters to build heatmaps, Gemini labels shots in the videos and a GRU network classifies each shot from the pose sequence.',
+        result:
+          'A working app whose core flow already runs on the real API (sign-up, bookings, tournaments, americanos, lessons, matchmaking and CRM), plus a first shot classifier trained on data labeled by the pipeline itself.',
+        images: [
+          { src: 'projetos/vibora/dashboard.webp', alt: 'Club overview: revenue, bookings, occupancy by court and hour, and alerts' },
+          { src: 'projetos/vibora/financeiro.webp', alt: 'Finance: revenue, expenses, profit, receivables and the daily series for the month' },
+          { src: 'projetos/vibora/torneios.webp', alt: 'The three tournament formats and every tournament running at the club' },
+          { src: 'projetos/vibora/torneio-classico.webp', alt: 'Classic tournament: confirmed pairs, entry-fee revenue and waitlist by category' },
+          { src: 'projetos/vibora/chave-ao-vivo.webp', alt: 'Live bracket: round-robin groups with standings, schedules and scores' },
+          { src: 'projetos/vibora/aulas.webp', alt: 'Lessons: schedule with coaches, students, courts, prices and status of each lesson' },
+          { src: 'projetos/vibora/perfil-clube.webp', alt: "The club's public profile as players see it, with courts and booking" },
+        ],
+        stack: ['Python', 'FastAPI', 'PostgreSQL', 'SQLModel', 'Alembic', 'Next.js', 'React', 'TypeScript', 'Tailwind', 'YOLO11', 'ByteTrack', 'OpenCV', 'PyTorch', 'Gemini'],
       },
       {
         title: 'Legal document analysis with LLMs and RAG',
@@ -270,8 +297,11 @@ export const en: Content = {
         start: '2024-02',
         end: '2026-03',
         status: 'Completed',
-        thesis:
-          'Cardiac arrhythmia detection with artificial intelligence using the AAMI standard and combinations of frontal-plane ECG leads (in Portuguese)',
+        thesis: {
+          label: 'Dissertation',
+          title:
+            'Cardiac arrhythmia detection with artificial intelligence using the AAMI standard and combinations of frontal-plane ECG leads (in Portuguese)',
+        },
       },
       {
         degree: 'BSc in Computer Science',
@@ -280,9 +310,18 @@ export const en: Content = {
         start: '2018-02',
         end: '2023-12',
         status: 'Completed',
+        thesis: {
+          label: 'Undergraduate thesis',
+          title: 'Cardiac arrhythmia detection: a lead I approach with hybrid neural networks (in Portuguese)',
+          summary:
+            'An AI model that detects 3 cardiac arrhythmias and tells them apart from normal rhythm using a single ECG lead, built with signal processing and deep learning. I used two ECG signal databases from PhysioNet, filtering and processing them into the training dataset. The model detected and distinguished the arrhythmias with high accuracy and efficiency, which can help improve the diagnosis of heart disease and support new cardiac monitoring solutions based on signals collected by the MP device.',
+          link: {
+            label: 'Dataset on Harvard Dataverse',
+            url: 'https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/ZIBSUU',
+          },
+        },
       },
     ],
-    thesisLabel: 'Dissertation',
     publicationsTitle: 'Publications',
     publications: [
       {

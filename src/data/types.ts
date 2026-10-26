@@ -12,7 +12,8 @@ export interface Experience {
   stack: string[];
 }
 
-export type ProjectKind = 'public' | 'corporate' | 'research';
+/** `personal` = projeto pessoal ainda não publicado. */
+export type ProjectKind = 'public' | 'personal' | 'corporate' | 'research';
 
 export interface Project {
   title: string;
@@ -39,8 +40,13 @@ export interface Education {
   start: string;
   end: string;
   status: string;
-  /** Título do TCC/dissertação, quando houver. */
-  thesis?: string;
+  /** TCC/dissertação, quando houver. */
+  thesis?: {
+    label: string;
+    title: string;
+    summary?: string;
+    link?: { label: string; url: string };
+  };
 }
 
 export interface Publication {
@@ -62,6 +68,10 @@ export interface Content {
     seeProjects: string;
     visit: string;
     readPaper: string;
+    /** Rótulos do slider de capturas. `{n}` é o número da captura. */
+    prevImage: string;
+    nextImage: string;
+    goToImage: string;
   };
   hero: {
     kicker: string;
@@ -95,7 +105,6 @@ export interface Content {
   education: {
     title: string;
     items: Education[];
-    thesisLabel: string;
     publicationsTitle: string;
     publications: Publication[];
   };

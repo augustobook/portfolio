@@ -28,9 +28,17 @@ const e = t.education;
               {ed.school} · {ed.location}
             </p>
             {ed.thesis && (
-              <p class="thesis">
-                <span class="mono">{e.thesisLabel}</span> {ed.thesis}
-              </p>
+              <div class="thesis">
+                <p>
+                  <span class="mono">{ed.thesis.label}</span> {ed.thesis.title}
+                </p>
+                {ed.thesis.summary && <p class="thesis-summary">{ed.thesis.summary}</p>}
+                {ed.thesis.link && (
+                  <a href={ed.thesis.link.url} class="link mono" target="_blank" rel="noopener">
+                    {ed.thesis.link.label} <Icon name="external" class="icon small" />
+                  </a>
+                )}
+              </div>
             )}
           </article>
         ))
@@ -98,10 +106,14 @@ const e = t.education;
     font-size: 0.92rem;
     line-height: 1.45;
   }
-  .thesis .mono {
+  .thesis > p > .mono {
     display: block;
     margin-bottom: 2px;
     font-size: 0.75rem;
+    color: var(--muted);
+  }
+  .thesis-summary {
+    margin: 8px 0 10px;
     color: var(--muted);
   }
   .sub {

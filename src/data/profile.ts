@@ -10,6 +10,6 @@ export const profile = {
   photo: 'foto.jpeg',
   // Foto sem fundo usada no topo; sem ela, o topo usa a foto normal recortada em círculo.
   photoCutout: 'foto-recorte.webp',
-  cvPdf: { pt: 'curriculo-augusto-maggioni.pdf', en: 'resume-augusto-maggioni.pdf' },
+  cvPdf: { pt: 'curriculo-augusto-maggioni.pdf', en: 'curriculo-augusto-maggioni-en.pdf' },
   careerStart: '2021-06',
 };

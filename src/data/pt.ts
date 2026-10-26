@@ -23,6 +23,9 @@ export const pt: Content = {
     seeProjects: 'Ver projetos',
     visit: 'Acessar projeto',
     readPaper: 'Ler artigo',
+    prevImage: 'Captura anterior',
+    nextImage: 'Próxima captura',
+    goToImage: 'Ir para a captura {n}',
   },
   hero: {
     kicker: 'Olá, eu sou',
@@ -125,10 +128,10 @@ export const pt: Content = {
   },
   projects: {
     title: 'Projetos',
-    featuredTitle: 'Projeto pessoal · no ar',
+    featuredTitle: 'Projetos pessoais',
     industryTitle: 'Projetos profissionais',
     industryNote: 'Descritos de forma genérica, respeitando a confidencialidade de cada empresa.',
-    kinds: { public: 'Publicado', corporate: 'Corporativo', research: 'Pesquisa' },
+    kinds: { public: 'Publicado', personal: 'Em desenvolvimento', corporate: 'Corporativo', research: 'Pesquisa' },
     labels: { problem: 'Problema', solution: 'Solução', result: 'Resultado', built: 'O que desenvolvi' },
     items: [
       {
@@ -151,6 +154,30 @@ export const pt: Content = {
           { src: 'projetos/radar-eleitoral/fragmentacao.webp', alt: 'Fragmentação e competição: margem de vitória e número efetivo de partidos nos municípios' },
         ],
         stack: ['Python', 'LangChain', 'Agentes LLM', 'OpenAI GPT', 'Text-to-SQL', 'DuckDB', 'PostgreSQL', 'Dash', 'Plotly', 'Pandas', 'PyArrow', 'Docker'],
+      },
+      {
+        title: 'Víbora',
+        context: 'Projeto pessoal · padel, tênis e beach tênis',
+        kind: 'personal',
+        featured: true,
+        summary:
+          'Plataforma para esportes de raquete com duas frentes: um app para o jogador achar jogo, reservar quadra, competir e acompanhar a própria evolução, e um painel para o clube gerir agenda, torneios, aulas, loja e relacionamento com os jogadores. Junto, uma linha de visão computacional que analisa o vídeo das partidas.',
+        problem:
+          'Clubes de padel gerenciam reservas, torneios e aulas em planilhas e grupos de WhatsApp, e o jogador amador não tem como achar parceiros do seu nível nem medir a própria evolução de forma justa.',
+        solution:
+          'Backend modular em FastAPI e PostgreSQL com 25 módulos de domínio: autenticação com JWT e refresh com rotação, reservas com checagem de conflito, torneios com chaves, grupos e mata-mata automáticos, americanos com rodadas round-robin, matchmaking por compatibilidade, ranking por rating e notificações. Frontend em Next.js e React com TypeScript. Na visão computacional: YOLO11-pose e ByteTrack rastreiam os jogadores, uma homografia converte pixels em metros da quadra para gerar mapas de calor, o Gemini rotula os golpes nos vídeos e uma rede GRU classifica o golpe a partir da sequência de pose.',
+        result:
+          'App navegável com o ciclo principal já ligado à API real (cadastro, reservas, torneios, americanos, aulas, matchmaking e CRM) e um primeiro classificador de golpes treinado com dados rotulados pelo próprio pipeline.',
+        images: [
+          { src: 'projetos/vibora/dashboard.webp', alt: 'Visão geral do clube: receita, reservas, ocupação por quadra e hora e alertas' },
+          { src: 'projetos/vibora/financeiro.webp', alt: 'Financeiro: receita, despesa, lucro, contas a receber e a série diária do mês' },
+          { src: 'projetos/vibora/torneios.webp', alt: 'Os três formatos de torneio e todos os torneios em andamento no clube' },
+          { src: 'projetos/vibora/torneio-classico.webp', alt: 'Torneio clássico: duplas confirmadas, receita de inscrições e lista de espera por categoria' },
+          { src: 'projetos/vibora/chave-ao-vivo.webp', alt: 'Chave ao vivo: grupos todos-contra-todos com classificação, horários e placares' },
+          { src: 'projetos/vibora/aulas.webp', alt: 'Aulas: agenda com professores, alunos, quadras, valores e situação de cada aula' },
+          { src: 'projetos/vibora/perfil-clube.webp', alt: 'Perfil público do clube como o jogador o vê, com quadras e reserva' },
+        ],
+        stack: ['Python', 'FastAPI', 'PostgreSQL', 'SQLModel', 'Alembic', 'Next.js', 'React', 'TypeScript', 'Tailwind', 'YOLO11', 'ByteTrack', 'OpenCV', 'PyTorch', 'Gemini'],
       },
       {
         title: 'Análise de documentos jurídicos com LLMs e RAG',
@@ -275,8 +302,11 @@ export const pt: Content = {
         start: '2024-02',
         end: '2026-03',
         status: 'Concluído',
-        thesis:
-          'Detecção de arritmias cardíacas com inteligência artificial utilizando o padrão AAMI e combinações de derivações do plano frontal',
+        thesis: {
+          label: 'Dissertação',
+          title:
+            'Detecção de arritmias cardíacas com inteligência artificial utilizando o padrão AAMI e combinações de derivações do plano frontal',
+        },
       },
       {
         degree: 'Bacharelado em Ciência da Computação',
@@ -285,9 +315,18 @@ export const pt: Content = {
         start: '2018-02',
         end: '2023-12',
         status: 'Concluído',
+        thesis: {
+          label: 'Trabalho de conclusão de curso',
+          title: 'Detecção de arritmias cardíacas: abordagem da derivação I com redes neurais híbridas',
+          summary:
+            'Inteligência artificial que detecta e distingue 3 arritmias cardíacas do ritmo normal usando apenas uma derivação do eletrocardiograma, com processamento de sinais e deep learning. Usei duas bases de sinais de ECG da PhysioNet, que filtrei e processei para montar a base de treinamento. O modelo detectou e distinguiu as arritmias com alta precisão e eficiência, o que pode ajudar no diagnóstico de doenças cardíacas e no desenvolvimento de novas soluções de monitoramento cardíaco a partir da coleta de sinais do aparelho MP.',
+          link: {
+            label: 'Base de dados no Harvard Dataverse',
+            url: 'https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/ZIBSUU',
+          },
+        },
       },
     ],
-    thesisLabel: 'Dissertação',
     publicationsTitle: 'Publicações',
     publications: [
       {

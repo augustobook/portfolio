@@ -53,15 +53,36 @@ const linkLabel = (kind: ProjectKind) => (kind === 'research' ? t.ui.readPaper :
             </div>
           </dl>
           {proj.images && (
-            <ul class="gallery">
-              {proj.images.map((img) => (
-                <li>
-                  <a href={withBase(img.src)} target="_blank" rel="noopener">
-                    <img src={withBase(img.src)} alt={img.alt} width="1440" height="900" loading="lazy" decoding="async" />
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <div class="slider" data-slider>
+              <ul class="track" tabindex="0" aria-label={proj.title}>
+                {proj.images.map((img) => (
+                  <li>
+                    <a href={withBase(img.src)} target="_blank" rel="noopener">
+                      <img src={withBase(img.src)} alt={img.alt} width="1440" height="900" loading="lazy" decoding="async" />
+                    </a>
+                    <p class="caption">{img.alt}</p>
+                  </li>
+                ))}
+              </ul>
+              {proj.images.length > 1 && (
+                <div class="controls">
+                  <button type="button" class="nav" data-prev aria-label={t.ui.prevImage} title={t.ui.prevImage}>
+                    <Icon name="prev" />
+                  </button>
+                  <div class="dots">
+                    {proj.images.map((_, i) => (
+                      <button type="button" class="dot" data-dot={i} aria-label={t.ui.goToImage.replace('{n}', String(i + 1))} />
+                    ))}
+                  </div>
+                  <span class="count mono" data-count>
+                    1 / {proj.images.length}
+                  </span>
+                  <button type="button" class="nav" data-next aria-label={t.ui.nextImage} title={t.ui.nextImage}>
+                    <Icon name="next" />
+                  </button>
+                </div>
+              )}
+            </div>
           )}
         </article>
       ))
@@ -110,6 +131,60 @@ const linkLabel = (kind: ProjectKind) => (kind === 'research' ? t.ui.readPaper :
     </div>
   </div>
 </section>
+
+<script>
+  const smooth = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+
+  document.querySelectorAll<HTMLElement>('[data-slider]').forEach((slider) => {
+    const track = slider.querySelector<HTMLElement>('.track')!;
+    const first = track.firstElementChild as HTMLElement;
+    const slides = track.children.length;
+    const controls = slider.querySelector<HTMLElement>('.controls');
+    const prev = slider.querySelector<HTMLButtonElement>('[data-prev]');
+    const next = slider.querySelector<HTMLButtonElement>('[data-next]');
+    const count = slider.querySelector<HTMLElement>('[data-count]');
+    const dots = slider.querySelectorAll<HTMLButtonElement>('[data-dot]');
+    if (!controls || !prev || !next) return;
+
+    // Anda uma captura por vez; o último índice deixa as últimas capturas visíveis juntas.
+    const step = () => first.offsetWidth + parseFloat(getComputedStyle(track).columnGap || '0');
+    const perView = () => Math.max(1, Math.round((track.clientWidth + step() - first.offsetWidth) / step()));
+    const last = () => Math.max(0, slides - perView());
+    const current = () => Math.min(last(), Math.round(track.scrollLeft / step()));
+    const goTo = (i: number) => {
+      const target = Math.max(0, Math.min(last(), i));
+      track.scrollTo({ left: target * step(), behavior: smooth });
+    };
+    const update = () => {
+      const i = current();
+      const shown = perView();
+      controls.hidden = last() === 0;
+      prev.disabled = i === 0;
+      next.disabled = i === last();
+      if (count) {
+        const end = Math.min(slides, i + shown);
+        count.textContent = shown > 1 ? `${i + 1}–${end} / ${slides}` : `${i + 1} / ${slides}`;
+      }
+      dots.forEach((d, j) => {
+        d.hidden = j > last();
+        d.setAttribute('aria-current', String(j === i));
+      });
+    };
+
+    prev.addEventListener('click', () => goTo(current() - 1));
+    next.addEventListener('click', () => goTo(current() + 1));
+    dots.forEach((d) => d.addEventListener('click', () => goTo(Number(d.dataset.dot))));
+    track.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+        e.preventDefault();
+        goTo(current() + (e.key === 'ArrowRight' ? 1 : -1));
+      }
+    });
+    track.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  });
+</script>
 
 <style>
   .group-title {
@@ -190,38 +265,128 @@ const linkLabel = (kind: ProjectKind) => (kind === 'research' ? t.ui.readPaper :
     margin: 6px 0 8px;
   }
 
-  /* Galeria de capturas: ocupa a largura toda do card. */
-  .gallery {
+  /* Slider de capturas: ocupa a largura toda do card, até 3 capturas visíveis por vez. */
+  .slider {
+    --per-view: 1;
+    --gap: 14px;
     grid-column: 1 / -1;
+    min-width: 0;
+    display: grid;
+    gap: 12px;
+  }
+  @media (min-width: 640px) {
+    .slider {
+      --per-view: 2;
+    }
+  }
+  @media (min-width: 900px) {
+    .slider {
+      --per-view: 3;
+    }
+  }
+  .track {
     list-style: none;
     margin: 0;
     padding: 0;
+    display: flex;
+    gap: var(--gap);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    border-radius: 10px;
+  }
+  .track::-webkit-scrollbar {
+    display: none;
+  }
+  .track:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+  .track li {
+    flex: 0 0 calc((100% - (var(--per-view) - 1) * var(--gap)) / var(--per-view));
+    scroll-snap-align: start;
     display: grid;
-    gap: 14px;
+    gap: 8px;
+    align-content: start;
   }
-  @media (min-width: 640px) {
-    .gallery {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-  .gallery a {
+  .track a {
     display: block;
     border-radius: 10px;
     overflow: hidden;
     border: 1px solid var(--border);
     box-shadow: var(--shadow);
-    transition: transform 0.15s, border-color 0.15s;
+    transition: border-color 0.15s;
   }
-  .gallery a:hover {
-    transform: translateY(-2px);
+  .track a:hover {
     border-color: var(--accent);
   }
-  .gallery img {
+  .track img {
     width: 100%;
     height: auto;
     aspect-ratio: 16 / 10;
     object-fit: cover;
     object-position: top left;
+  }
+  .caption {
+    margin: 0;
+    font-size: 0.8rem;
+    line-height: 1.45;
+    color: var(--muted);
+  }
+  .controls[hidden] {
+    display: none;
+  }
+  .controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .nav {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    color: var(--text);
+    cursor: pointer;
+    transition: border-color 0.15s, color 0.15s, opacity 0.15s;
+  }
+  .nav:hover:not(:disabled) {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .nav:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+  .dots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    flex: 1;
+    justify-content: center;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: 0;
+    border-radius: 4px;
+    background: var(--border);
+    cursor: pointer;
+    transition: width 0.2s, background 0.2s;
+  }
+  .dot[aria-current='true'] {
+    width: 22px;
+    background: var(--accent);
+  }
+  .count {
+    font-size: 0.78rem;
+    color: var(--muted);
+    min-width: 3.5em;
+    text-align: right;
   }
 
   .psr {

@@ -1,7 +1,7 @@
 ---
 // Ícones SVG inline (traço 2px, herdam a cor do texto).
 interface Props {
-  name: 'mail' | 'linkedin' | 'github' | 'download' | 'arrow' | 'external' | 'sun' | 'moon' | 'pin' | 'paper' | 'menu' | 'close';
+  name: 'mail' | 'linkedin' | 'github' | 'download' | 'arrow' | 'external' | 'sun' | 'moon' | 'pin' | 'paper' | 'menu' | 'close' | 'prev' | 'next';
   class?: string;
 }
 const { name, class: className = 'icon' } = Astro.props;
@@ -20,4 +20,6 @@ const { name, class: className = 'icon' } = Astro.props;
   {name === 'paper' && <><path d="M7 3h7l5 5v13H7z" /><path d="M14 3v5h5M10 13h6M10 17h6" /></>}
   {name === 'menu' && <path d="M4 7h16M4 12h16M4 17h16" />}
   {name === 'close' && <path d="M6 6l12 12M18 6 6 18" />}
+  {name === 'prev' && <path d="m15 6-6 6 6 6" />}
+  {name === 'next' && <path d="m9 6 6 6-6 6" />}
 </svg>
