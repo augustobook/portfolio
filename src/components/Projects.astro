@@ -37,6 +37,7 @@ const linkLabel = (kind: ProjectKind) => (kind === 'research' ? t.ui.readPaper :
                 {linkLabel(proj.kind)} <Icon name="external" />
               </a>
             )}
+            {proj.urlNote && <p class="url-note">{proj.urlNote}</p>}
           </div>
           <dl class="psr">
             <div>
@@ -263,6 +264,13 @@ const linkLabel = (kind: ProjectKind) => (kind === 'research' ? t.ui.readPaper :
   }
   .featured .chips {
     margin: 6px 0 8px;
+  }
+  .url-note {
+    margin: 0;
+    max-width: 44ch;
+    font-size: 0.8rem;
+    line-height: 1.45;
+    color: var(--muted);
   }
 
   /* Slider de capturas: ocupa a largura toda do card, até 3 capturas visíveis por vez. */

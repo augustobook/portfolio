@@ -140,6 +140,7 @@ export const pt: Content = {
         kind: 'public',
         featured: true,
         url: 'https://radar-eleitoral.oladata.com.br/',
+        urlNote: 'Se o site não responder, é porque o servidor está desligado para evitar custos. É só me chamar que eu ligo.',
         summary:
           'Painel das eleições brasileiras de 2010 a 2026 com um chatbot de IA que responde, em linguagem natural, qualquer pergunta do usuário sobre os dados e o site.',
         problem:

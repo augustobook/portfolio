@@ -140,6 +140,7 @@ export const en: Content = {
         kind: 'public',
         featured: true,
         url: 'https://radar-eleitoral.oladata.com.br/',
+        urlNote: "If the site doesn't respond, the server is switched off to save costs. Just reach out and I'll turn it on.",
         summary:
           'A dashboard of Brazilian elections from 2010 to 2026 with an AI chatbot that answers any question users ask about the data and the site, in plain language.',
         problem:

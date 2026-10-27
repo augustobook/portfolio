@@ -29,6 +29,8 @@ export interface Project {
   /** Capturas de tela em /public, exibidas como galeria no card. */
   images?: { src: string; alt: string }[];
   url?: string;
+  /** Observação curta exibida abaixo do botão do link. */
+  urlNote?: string;
   featured?: boolean;
 }
 
