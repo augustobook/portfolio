@@ -73,6 +73,7 @@ export const en: Content = {
         start: '2024-10',
         bullets: [
           'Built data and AI solutions to automate legal processes, supporting legal and operational decision-making',
+          'Worked on projects for public agencies such as the <strong>Espírito Santo State Health Department (SESA-ES)</strong>, the <strong>São Paulo Traffic Engineering Company (CET-SP)</strong>, <strong>Detran</strong> (state traffic department) and the <strong>Civil Police</strong>',
           'Implemented LLM (Gemini and open-source models) and RAG solutions with LangChain, with semantic search on pgvector, Qdrant, Chroma and Elasticsearch, to read, interpret and generate documents',
           'Set up evaluation for the LLM/RAG systems: a reference set for regression testing, retrieval metrics, expert human review and cost and latency monitoring',
           'Built crawlers and web scrapers for courts and legal websites, plus data pipelines and machine learning models to extract and analyze information',

@@ -73,6 +73,7 @@ export const pt: Content = {
         start: '2024-10',
         bullets: [
           'Desenvolvi soluções de dados e IA para automação de processos jurídicos, apoiando a tomada de decisão nas áreas jurídica e operacional',
+          'Atuei em projetos para órgãos públicos como a <strong>Secretaria da Saúde do Espírito Santo (SESA-ES)</strong>, a <strong>Companhia de Engenharia de Tráfego de São Paulo (CET-SP)</strong>, o <strong>Detran</strong> e a <strong>Polícia Civil</strong>',
           'Implementei soluções com LLMs (Gemini e modelos open-source) e RAG com LangChain, com busca semântica em pgvector, Qdrant, Chroma e Elasticsearch, para leitura, interpretação e geração de documentos',
           'Estruturei a avaliação das soluções de LLM/RAG: base de referência para testes de regressão, métricas de recuperação, revisão humana por especialistas e monitoramento de custo e latência',
           'Desenvolvi crawlers e web scraping de tribunais e sites jurídicos, e estruturei pipelines de dados e modelos de machine learning para extração e análise de informações',
